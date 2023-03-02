@@ -17,8 +17,6 @@ Installer::~Installer() {
     delete ui;
 }
 
-void Installer::on_startInstall_clicked()
-{
+void Installer::on_startInstall_clicked() {
 
 }
-

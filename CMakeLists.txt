@@ -14,17 +14,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
-set(TS_FILES MS-office-installer_it_IT.ts)
+set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        installer.cpp
-        installer.h
-        installer.ui
-        OfficeDeploymentTool.hpp
-        OfficeDeploymentTool.cpp
+        src/installer.cpp
+        src/installer.h
+        src/installer.ui
+        src/OfficeDeploymentTool.hpp
+        src/OfficeDeploymentTool.cpp
         ${TS_FILES}
-        ConfigGenerator.cpp ConfigGenerator.hpp)
+        src/ConfigGenerator.cpp src/ConfigGenerator.hpp)
 
 qt_add_executable(MS-office-installer
     MANUAL_FINALIZATION
