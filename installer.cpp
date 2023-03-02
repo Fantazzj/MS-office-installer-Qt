@@ -16,3 +16,9 @@ Installer::Installer(QWidget* parent) :
 Installer::~Installer() {
     delete ui;
 }
+
+void Installer::on_startInstall_clicked()
+{
+
+}
+

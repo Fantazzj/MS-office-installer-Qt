@@ -18,6 +18,9 @@ public:
     Installer(QWidget* parent = nullptr);
     ~Installer();
 
+private slots:
+    void on_startInstall_clicked();
+
 private:
     Ui::Installer* ui;
     ConfigGenerator xml;
