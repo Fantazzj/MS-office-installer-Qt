@@ -27,22 +27,22 @@ set(PROJECT_SOURCES
         src/ConfigGenerator.cpp src/ConfigGenerator.hpp)
 
 qt_add_executable(MS-office-installer
-    MANUAL_FINALIZATION
-    ${PROJECT_SOURCES}
-)
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+        )
 
 target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(MS-office-installer PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
+        MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+        MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+        MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        MACOSX_BUNDLE TRUE
+        WIN32_EXECUTABLE TRUE
+        )
 
 install(TARGETS MS-office-installer
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        BUNDLE DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-    qt_finalize_executable(MS-office-installer)
+qt_finalize_executable(MS-office-installer)
