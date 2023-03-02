@@ -1,5 +1,4 @@
 #include "installer.h"
-#include "OfficeDeploymentTool.h"
 #include "ui_installer.h"
 
 Installer::Installer(QWidget* parent) :
