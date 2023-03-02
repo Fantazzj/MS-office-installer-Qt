@@ -9,7 +9,8 @@ Installer::Installer(QWidget* parent) :
     ui->checkBoxPowerPoint->setChecked(true);
     ui->checkBoxExcel->setChecked(true);
 
-    OfficeDeploymentTool office = OfficeDeploymentTool();
+    office = OfficeDeploymentTool();
+    xml = ConfigGenerator();
 }
 
 Installer::~Installer() {
