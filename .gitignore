@@ -31,7 +31,6 @@ ui_*.h
 qrc_*.cpp
 Thumbs.db
 *.res
-*.rc
 /.qmake.cache
 /.qmake.stash
 
@@ -66,9 +65,13 @@ Thumbs.db
 # Python byte code
 *.pyc
 
+# Clion configuration
+.idea/*
+
 # Binaries
 # --------
 *.dll
 *.exe
+cmake-build-debug/*
 
 CMakeLists.txt.user
