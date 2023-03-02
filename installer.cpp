@@ -1,5 +1,4 @@
 #include "installer.h"
-#include "OfficeDeploymentTool.h"
 #include "ui_installer.h"
 
 Installer::Installer(QWidget* parent) :
@@ -10,9 +9,16 @@ Installer::Installer(QWidget* parent) :
     ui->checkBoxPowerPoint->setChecked(true);
     ui->checkBoxExcel->setChecked(true);
 
-    OfficeDeploymentTool office = OfficeDeploymentTool();
+    office = OfficeDeploymentTool();
+    xml = ConfigGenerator();
 }
 
 Installer::~Installer() {
     delete ui;
 }
+
+void Installer::on_startInstall_clicked()
+{
+
+}
+

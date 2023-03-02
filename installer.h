@@ -2,6 +2,8 @@
 #define INSTALLER_H
 
 #include <QMainWindow>
+#include "ConfigGenerator.hpp"
+#include "OfficeDeploymentTool.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +18,13 @@ public:
     Installer(QWidget* parent = nullptr);
     ~Installer();
 
+private slots:
+    void on_startInstall_clicked();
+
 private:
     Ui::Installer* ui;
+    ConfigGenerator xml;
+    OfficeDeploymentTool office;
+
 };
 #endif// INSTALLER_H
