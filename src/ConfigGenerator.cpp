@@ -104,5 +104,9 @@ void ConfigGenerator::_writeExludeAppElements() {
 }
 
 void ConfigGenerator::_writeUpdatesElement() {
-
+	configXml->writeStartElement("Updates");
+	if(_ui->checkBoxUpdates->isChecked())
+		configXml->writeAttribute("Enabled", "TRUE");
+	else
+		configXml->writeAttribute("Enabled", "FALSE");
 }
