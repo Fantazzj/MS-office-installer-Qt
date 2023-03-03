@@ -15,4 +15,4 @@ private:
 	Ui::Installer* _ui;
 };
 
-#endif// CONFIGGENERATOR_HPP
+#endif//CONFIGGENERATOR_HPP

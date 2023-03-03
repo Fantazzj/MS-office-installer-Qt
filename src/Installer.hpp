@@ -26,4 +26,4 @@ private:
 	ConfigGenerator* xml;
 	OfficeDeploymentTool* office;
 };
-#endif// INSTALLER_HPP
+#endif//INSTALLER_HPP
