@@ -1,5 +1,5 @@
-#ifndef INSTALLER_H
-#define INSTALLER_H
+#ifndef INSTALLER_HPP
+#define INSTALLER_HPP
 
 #include <QMainWindow>
 #include "ConfigGenerator.hpp"
@@ -27,4 +27,4 @@ private:
     OfficeDeploymentTool office;
 
 };
-#endif// INSTALLER_H
+#endif// INSTALLER_HPP

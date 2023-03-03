@@ -1,4 +1,4 @@
-#include "src/installer.h"
+#include "src/Installer.hpp"
 
 #include <QApplication>
 #include <QLocale>

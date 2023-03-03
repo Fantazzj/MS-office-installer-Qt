@@ -18,9 +18,9 @@ set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        src/installer.h
-        src/installer.cpp
-        src/installer.ui
+        src/Installer.hpp
+        src/Installer.cpp
+        src/Installer.ui
         src/OfficeDeploymentTool.hpp
         src/OfficeDeploymentTool.cpp
         src/ConfigGenerator.hpp
