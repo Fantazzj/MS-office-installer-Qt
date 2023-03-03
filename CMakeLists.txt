@@ -18,13 +18,15 @@ set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        src/installer.cpp
         src/installer.h
+        src/installer.cpp
         src/installer.ui
         src/OfficeDeploymentTool.hpp
         src/OfficeDeploymentTool.cpp
+        src/ConfigGenerator.hpp
+        src/ConfigGenerator.cpp
         ${TS_FILES}
-        src/ConfigGenerator.cpp src/ConfigGenerator.hpp)
+        )
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
