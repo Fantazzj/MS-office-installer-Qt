@@ -30,35 +30,25 @@ void ConfigGenerator::createFile(QString nameFile) {
 
 	configXml->setAutoFormatting(true);
 
-	//1 O
 	configXml->writeStartElement("Configuration");
 
-	//2 O
-	_writeAddElement();
+	_writeAddElement(); //Add
 
-	//3 O
-	_writeProductOfficeElement();
-	_writeOfficeLangsElements();
-	_writeExludeAppElements();
-	//3 C
-	configXml->writeEndElement();
+	_writeProductOfficeElement(); //Product
+	_writeOfficeLangsElements(); //Language
+	_writeEcxludeAppElements(); //ExcludeApp
+	configXml->writeEndElement(); //Product
 
-	//3 O
-	_writeProductProofingElement();
-	_writeProofingLangsElements();
-	//3 C
-	configXml->writeEndElement();
+	_writeProductProofingElement(); //Product
+	_writeProofingLangsElements(); //Language
+	configXml->writeEndElement(); //Product
 
-	//3 O
-	configXml->writeEndElement();
-	configXml->writeEndElement();
-	configXml->writeEndElement();
+	configXml->writeEndElement(); //Add
 
-	//2 C
-	configXml->writeEndElement();
+	_writeUpdatesElement(); //Updates
+	configXml->writeEndElement(); //Updates
 
-	//1 C
-	configXml->writeEndElement();
+	configXml->writeEndElement(); //Configuration
 
 	configFile->close();
 }
@@ -73,7 +63,6 @@ void ConfigGenerator::_writeAddElement() {
 	configXml->writeStartElement("Add");
 	configXml->writeAttribute("OfficeClientEdition", version);
 	configXml->writeAttribute("Channel", channel);
-
 }
 
 void ConfigGenerator::_writeProductOfficeElement() {
@@ -86,20 +75,20 @@ void ConfigGenerator::_writeProductProofingElement() {
 
 void ConfigGenerator::_writeOfficeLangsElements() {
 	configXml->writeStartElement("Language");
-	configXml->writeEndElement();
+	configXml->writeEndElement(); //Language
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
 	configXml->writeStartElement("Language");
-	configXml->writeEndElement();
+	configXml->writeEndElement(); //Language
 }
 
-void ConfigGenerator::_writeExludeAppElements() {
+void ConfigGenerator::_writeEcxludeAppElements() {
 	for(auto& A: apps)
 		if(!A->isChecked()) {
-			configXml->writeStartElement("EXcludeApp");
-			configXml->writeAttribute("ID", A->accessibleName());
-			configXml->writeEndElement();
+			configXml->writeStartElement("ExcludeApp");
+			configXml->writeAttribute("ID", A->objectName().remove("checkBox"));
+			configXml->writeEndElement(); //ExcludeApp
 		}
 }
 
