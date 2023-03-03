@@ -4,6 +4,8 @@
 class OfficeDeploymentTool {
 public:
 	OfficeDeploymentTool();
+	int install();
+	int download();
 
 private:
 };

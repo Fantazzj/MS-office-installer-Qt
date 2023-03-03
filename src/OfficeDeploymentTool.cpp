@@ -1,5 +1,13 @@
 #include "OfficeDeploymentTool.hpp"
-#include <iostream>
 
 OfficeDeploymentTool::OfficeDeploymentTool() {
+
+}
+
+int OfficeDeploymentTool::install() {
+	return 0;
+}
+
+int OfficeDeploymentTool::download() {
+	return 0;
 }
