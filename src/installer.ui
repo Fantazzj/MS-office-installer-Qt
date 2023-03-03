@@ -117,7 +117,7 @@
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="checkBoxOneDrive">
         <property name="text">
          <string>OneDrive</string>
         </property>
@@ -224,6 +224,13 @@
        <widget class="QCheckBox" name="checkBoxProject">
         <property name="text">
          <string>Project</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QCheckBox" name="checkBoxOneNote">
+        <property name="text">
+         <string>OneNote</string>
         </property>
        </widget>
       </item>

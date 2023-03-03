@@ -20,18 +20,14 @@ public:
 
 private slots:
 	void on_pushButtonExport_clicked();
-
 	void on_pushButtonDownload_clicked();
-
 	void on_pushButtonInstall_clicked();
-
 	void on_pushButtonDownloadAndInstall_clicked();
-
 	void on_toolButtonOfficeSetup_clicked();
 
 private:
 	Ui::Installer* ui;
-	ConfigGenerator* xml;
+	ConfigGenerator* config;
 	OfficeDeploymentTool* office;
 };
 #endif//INSTALLER_HPP
