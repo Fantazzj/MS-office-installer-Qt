@@ -3,9 +3,9 @@
 
 class OfficeDeploymentTool {
 public:
-    OfficeDeploymentTool();
-private:
+	OfficeDeploymentTool();
 
+private:
 };
 
 #endif// OFFICEDEPLOYMENTTOOL_H

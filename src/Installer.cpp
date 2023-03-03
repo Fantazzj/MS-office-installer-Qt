@@ -2,21 +2,20 @@
 #include "ui_installer.h"
 
 Installer::Installer(QWidget* parent) :
-    QMainWindow(parent), ui(new Ui::Installer) {
-    ui->setupUi(this);
+	QMainWindow(parent), ui(new Ui::Installer) {
+	ui->setupUi(this);
 
-    ui->checkBoxWord->setChecked(true);
-    ui->checkBoxPowerPoint->setChecked(true);
-    ui->checkBoxExcel->setChecked(true);
+	ui->checkBoxWord->setChecked(true);
+	ui->checkBoxPowerPoint->setChecked(true);
+	ui->checkBoxExcel->setChecked(true);
 
-    office = OfficeDeploymentTool();
-    xml = ConfigGenerator();
+	office = new OfficeDeploymentTool();
+	xml = new ConfigGenerator(*ui);
 }
 
 Installer::~Installer() {
-    delete ui;
+	delete ui;
 }
 
 void Installer::on_startInstall_clicked() {
-
 }

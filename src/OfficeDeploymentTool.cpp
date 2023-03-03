@@ -2,5 +2,4 @@
 #include <iostream>
 
 OfficeDeploymentTool::OfficeDeploymentTool() {
-
 }
