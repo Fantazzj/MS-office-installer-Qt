@@ -10,7 +10,7 @@ Installer::Installer(QWidget* parent) :
 	ui->checkBoxExcel->setChecked(true);
 
 	office = new OfficeDeploymentTool();
-	xml = new ConfigGenerator(*ui);
+	xml = new ConfigGenerator(ui);
 }
 
 Installer::~Installer() {

@@ -7,12 +7,12 @@
 
 class ConfigGenerator {
 public:
-	ConfigGenerator(Ui::Installer ui);
+	ConfigGenerator(Ui::Installer* ui);
 
 private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
-	Ui::Installer _ui;
+	Ui::Installer* _ui;
 };
 
 #endif// CONFIGGENERATOR_HPP
