@@ -6,6 +6,7 @@ Installer::Installer(QWidget* parent) :
 
 	ui->setupUi(this);
 
+	/*
 	ui->checkBoxWord->setChecked(true);
 	ui->checkBoxPowerPoint->setChecked(true);
 	ui->checkBoxExcel->setChecked(true);
@@ -15,6 +16,7 @@ Installer::Installer(QWidget* parent) :
 
 	ui->comboBoxRelease->addItem("Current");
 	ui->comboBoxRelease->addItem("Stable??");
+	*/
 
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);

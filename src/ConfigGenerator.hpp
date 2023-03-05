@@ -5,6 +5,10 @@
 #include <QFile>
 #include <QXmlStreamWriter>
 #include <QVector>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonValue>
 
 class ConfigGenerator {
 public:
@@ -15,6 +19,7 @@ public:
 private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
+	QJsonObject _jsonObj;
 	Ui::Installer* _ui;
 	QVector<QCheckBox*> apps;
 	void _writeAddElement();
@@ -24,6 +29,7 @@ private:
 	void _writeProofingLangsElements();
 	void _writeExcludeAppElements();
 	void _writeUpdatesElement();
+	void _comboBoxPopulator(QComboBox* comboBox, QString key);
 };
 
 #endif//CONFIGGENERATOR_HPP

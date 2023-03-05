@@ -17,6 +17,18 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
 	apps.append(_ui->checkBoxLync);
 	apps.append(_ui->checkBoxProject);
 	apps.append(_ui->checkBoxSharePointDesigner);
+
+	QFile jsonFile = QFile("../res/contents.json");
+	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
+	QString dummy = jsonFile.readAll();
+	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
+	jsonFile.close();
+	_jsonObj = jsonDoc.object();
+
+	_comboBoxPopulator(_ui->comboBoxVersion, "versions");
+	_comboBoxPopulator(_ui->comboBoxProduct, "product");
+	_comboBoxPopulator(_ui->comboBoxRelease, "releaseChannel");
+
 }
 
 ConfigGenerator::~ConfigGenerator() {
@@ -57,7 +69,7 @@ void ConfigGenerator::_writeAddElement() {
 	QString version = "64";
 	QString channel = "Current";
 
-	version = _ui->comboBoxVersion->currentText().remove(" bit");
+	version = _ui->comboBoxVersion->currentData().toString();
 	channel = _ui->comboBoxRelease->currentText();
 
 	configXml->writeStartElement("Add");
@@ -98,4 +110,13 @@ void ConfigGenerator::_writeUpdatesElement() {
 		configXml->writeAttribute("Enabled", "TRUE");
 	else
 		configXml->writeAttribute("Enabled", "FALSE");
+}
+
+void ConfigGenerator::_comboBoxPopulator(QComboBox* comboBox, QString key) {
+	QJsonArray versions = _jsonObj.value(key).toArray();
+	qDebug() << versions;
+	for(QJsonValueRef A: versions) {
+		qDebug() << A.toArray().at(0) << A.toArray().at(1);
+		comboBox->addItem(A.toArray().at(0).toString(), A.toArray().at(1).toString());
+	}
 }
