@@ -1,0 +1,42 @@
+{
+  "presets": [
+    {
+      "name": "School",
+      "apps": [
+        "Word",
+        "Powerpoint",
+        "Excel",
+        "Teams"
+      ]
+    },
+    {
+      "name": "Home",
+      "apps": [
+        "Word",
+        "Powerpoint",
+        "Excel"
+      ]
+    }
+  ],
+  "versions": [
+    ["32 bit", "32"],
+    ["64 bit", "64"]
+  ],
+  "product": [
+    ["Office 365 Enterprise", "O365ProPlusRetail"],
+    ["Office 365 Business", "O365BusinessRetail"]
+  ],
+  "releaseChannel": [
+    ["Beta", "BetaChannel"],
+    ["Current Preview", "CurrentPreview"],
+    ["Current", "Current"],
+    ["Monthly Enterprise", "MonthlyEnterprise"],
+    ["Semi-Annual Preview", "SemiAnnualPreview"],
+    ["Semi-Annual", "SemiAnnual"]
+  ],
+  "languages": [
+    ["Italian", "it-it"],
+    ["English(US)", "en-us"],
+    ["English(UK)", "en-uk"]
+  ]
+}
