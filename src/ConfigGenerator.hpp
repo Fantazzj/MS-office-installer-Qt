@@ -22,7 +22,7 @@ private:
 	void _writeProductProofingElement();
 	void _writeOfficeLangsElements();
 	void _writeProofingLangsElements();
-	void _writeEcxludeAppElements();
+	void _writeExcludeAppElements();
 	void _writeUpdatesElement();
 };
 

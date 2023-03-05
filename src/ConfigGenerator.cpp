@@ -36,7 +36,7 @@ void ConfigGenerator::createFile(QString nameFile) {
 
 	_writeProductOfficeElement(); //Product
 	_writeOfficeLangsElements(); //Language
-	_writeEcxludeAppElements(); //ExcludeApp
+	_writeExcludeAppElements(); //ExcludeApp
 	configXml->writeEndElement(); //Product
 
 	_writeProductProofingElement(); //Product
@@ -83,7 +83,7 @@ void ConfigGenerator::_writeProofingLangsElements() {
 	configXml->writeEndElement(); //Language
 }
 
-void ConfigGenerator::_writeEcxludeAppElements() {
+void ConfigGenerator::_writeExcludeAppElements() {
 	for(auto& A: apps)
 		if(!A->isChecked()) {
 			configXml->writeStartElement("ExcludeApp");
