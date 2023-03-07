@@ -20,6 +20,8 @@ Installer::Installer(QWidget* parent) :
 
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);
+
+	langUi = new languageSelector();
 }
 
 Installer::~Installer() {

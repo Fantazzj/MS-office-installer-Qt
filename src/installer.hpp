@@ -3,6 +3,7 @@
 
 #include "ConfigGenerator.hpp"
 #include "OfficeDeploymentTool.hpp"
+#include "languageSelector.hpp"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,7 @@ private slots:
 
 private:
 	Ui::Installer* ui;
+	languageSelector* langUi;
 	ConfigGenerator* config;
 	OfficeDeploymentTool* office;
 };
