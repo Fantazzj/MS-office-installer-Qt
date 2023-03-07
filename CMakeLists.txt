@@ -21,12 +21,15 @@ set(PROJECT_SOURCES
         src/installer.hpp
         src/installer.cpp
         src/installer.ui
+        src/languageSelector.ui
+        src/languageSelector.hpp
+        src/languageSelector.cpp
         src/OfficeDeploymentTool.hpp
         src/OfficeDeploymentTool.cpp
         src/ConfigGenerator.hpp
         src/ConfigGenerator.cpp
         ${TS_FILES}
-        )
+        src/languageSelector.cpp src/languageSelector.hpp)
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
