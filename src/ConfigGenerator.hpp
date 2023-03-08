@@ -31,7 +31,6 @@ private:
 	void _writeExcludeAppElements();
 	void _writeUpdatesElement();
 	void _comboBoxPopulator(QComboBox* comboBox, QString key);
-	void _comboBoxPopulator2(QComboBox* comboBox, QString key);
 };
 
 #endif//CONFIGGENERATOR_HPP

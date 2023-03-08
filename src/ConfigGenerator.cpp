@@ -112,23 +112,6 @@ void ConfigGenerator::_writeUpdatesElement() {
 		configXml->writeAttribute("Enabled", "FALSE");
 }
 
-void ConfigGenerator::_comboBoxPopulator2(QComboBox* comboBox, QString key) {
-
-	
-	QStandardItemModel* model= new QStandardItemModel(3, 1); // 3 rows, 1 col
-	for (int r = 0; r < 3; ++r)
-	{
-		QStandardItem* item = new QStandardItem(QString("Item %0").arg(r));
-
-		item->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
-		item->setData(Qt::Unchecked, Qt::CheckStateRole);
-
-		model->setItem(r, 0, item);
-	}
-
-	comboBox->setModel(model);
-}
-
 void ConfigGenerator::_comboBoxPopulator(QComboBox* comboBox, QString key) {
 	QJsonArray versions = _jsonObj.value(key).toArray();
 	qDebug() << versions;
