@@ -18,7 +18,12 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
 	checkBoxApps.append(installerUi->checkBoxProject);
 	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);
 
+#ifdef DEBUG
 	QFile jsonFile = QFile("../res/contents.json");
+#else
+	QFile jsonFile = QFile("contents.json");
+#endif
+
 	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString dummy = jsonFile.readAll();
 	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());

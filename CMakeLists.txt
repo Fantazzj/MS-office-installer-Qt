@@ -19,6 +19,8 @@ set(TS_FILES translations/MS-office-installer_it_IT.ts)
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_compile_definitions(QT_NO_DEBUG_OUTPUT)
     add_compile_definitions(QT_NO_INFO_OUTPUT)
+else ()
+    add_compile_definitions(DEBUG)
 endif ()
 
 add_compile_definitions(SEPARATOR="------")
