@@ -5,17 +5,11 @@ Installer::Installer(QWidget* parent) :
 	QMainWindow(parent), ui(new Ui::Installer) {
 	ui->setupUi(this);
 
-	/*
-	ui->checkBoxWord->setChecked(true);
-	ui->checkBoxPowerPoint->setChecked(true);
-	ui->checkBoxExcel->setChecked(true);
-
-	ui->comboBoxVersion->addItem("64 bit");
-	ui->comboBoxVersion->addItem("32 bit");
-
-	ui->comboBoxRelease->addItem("Current");
-	ui->comboBoxRelease->addItem("Stable??");
-	*/
+	if(!QFile("setup.exe").exists()) {
+		ui->pushButtonDownload->setDisabled(true);
+		ui->pushButtonInstall->setDisabled(true);
+		ui->pushButtonDownloadAndInstall->setDisabled(true);
+	}
 
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);
