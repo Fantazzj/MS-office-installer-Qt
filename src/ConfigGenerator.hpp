@@ -2,14 +2,14 @@
 #define CONFIGGENERATOR_HPP
 
 #include "ui_installer.h"
-#include <QStandardItemModel>
 #include <QFile>
-#include <QXmlStreamWriter>
-#include <QVector>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QJsonArray>
 #include <QJsonValue>
+#include <QStandardItemModel>
+#include <QVector>
+#include <QXmlStreamWriter>
 
 class ConfigGenerator {
 public:
@@ -20,9 +20,9 @@ public:
 private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
-	QJsonObject _jsonObj;
-	Ui::Installer* _ui;
-	QVector<QCheckBox*> apps;
+	QJsonObject jsonObj;
+	Ui::Installer* installerUi;
+	QVector<QCheckBox*> checkBoxApps;
 	void _writeAddElement();
 	void _writeProductOfficeElement();
 	void _writeProductProofingElement();

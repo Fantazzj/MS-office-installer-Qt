@@ -1,33 +1,33 @@
 #include "ConfigGenerator.hpp"
 
 ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
-	_ui = ui;
+	installerUi = ui;
 
-	apps.append(_ui->checkBoxWord);
-	apps.append(_ui->checkBoxPowerPoint);
-	apps.append(_ui->checkBoxExcel);
-	apps.append(_ui->checkBoxAccess);
-	apps.append(_ui->checkBoxPublisher);
-	apps.append(_ui->checkBoxOutlook);
-	apps.append(_ui->checkBoxTeams);
-	apps.append(_ui->checkBoxOneDrive);
-	apps.append(_ui->checkBoxOneNote);
-	apps.append(_ui->checkBoxGroove);
-	apps.append(_ui->checkBoxInfoPath);
-	apps.append(_ui->checkBoxLync);
-	apps.append(_ui->checkBoxProject);
-	apps.append(_ui->checkBoxSharePointDesigner);
+	checkBoxApps.append(installerUi->checkBoxWord);
+	checkBoxApps.append(installerUi->checkBoxPowerPoint);
+	checkBoxApps.append(installerUi->checkBoxExcel);
+	checkBoxApps.append(installerUi->checkBoxAccess);
+	checkBoxApps.append(installerUi->checkBoxPublisher);
+	checkBoxApps.append(installerUi->checkBoxOutlook);
+	checkBoxApps.append(installerUi->checkBoxTeams);
+	checkBoxApps.append(installerUi->checkBoxOneDrive);
+	checkBoxApps.append(installerUi->checkBoxOneNote);
+	checkBoxApps.append(installerUi->checkBoxGroove);
+	checkBoxApps.append(installerUi->checkBoxInfoPath);
+	checkBoxApps.append(installerUi->checkBoxLync);
+	checkBoxApps.append(installerUi->checkBoxProject);
+	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);
 
 	QFile jsonFile = QFile("../res/contents.json");
 	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString dummy = jsonFile.readAll();
 	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
 	jsonFile.close();
-	_jsonObj = jsonDoc.object();
+	jsonObj = jsonDoc.object();
 
-	_comboBoxPopulator(_ui->comboBoxVersion, "versions");
-	_comboBoxPopulator(_ui->comboBoxProduct, "product");
-	_comboBoxPopulator(_ui->comboBoxRelease, "releaseChannel");
+	_comboBoxPopulator(installerUi->comboBoxVersion, "versions");
+	_comboBoxPopulator(installerUi->comboBoxProduct, "product");
+	_comboBoxPopulator(installerUi->comboBoxRelease, "releaseChannel");
 }
 
 ConfigGenerator::~ConfigGenerator() {
@@ -68,8 +68,8 @@ void ConfigGenerator::_writeAddElement() {
 	QString version = "64";
 	QString channel = "Current";
 
-	version = _ui->comboBoxVersion->currentData().toString();
-	channel = _ui->comboBoxRelease->currentText();
+	version = installerUi->comboBoxVersion->currentData().toString();
+	channel = installerUi->comboBoxRelease->currentText();
 
 	configXml->writeStartElement("Add");
 	configXml->writeAttribute("OfficeClientEdition", version);
@@ -95,7 +95,7 @@ void ConfigGenerator::_writeProofingLangsElements() {
 }
 
 void ConfigGenerator::_writeExcludeAppElements() {
-	for(auto& A: apps)
+	for(auto& A: checkBoxApps)
 		if(!A->isChecked()) {
 			configXml->writeStartElement("ExcludeApp");
 			configXml->writeAttribute("ID", A->objectName().remove("checkBox"));
@@ -105,14 +105,14 @@ void ConfigGenerator::_writeExcludeAppElements() {
 
 void ConfigGenerator::_writeUpdatesElement() {
 	configXml->writeStartElement("Updates");
-	if(_ui->checkBoxUpdates->isChecked())
+	if(installerUi->checkBoxUpdates->isChecked())
 		configXml->writeAttribute("Enabled", "TRUE");
 	else
 		configXml->writeAttribute("Enabled", "FALSE");
 }
 
 void ConfigGenerator::_comboBoxPopulator(QComboBox* comboBox, QString key) {
-	QJsonArray versions = _jsonObj.value(key).toArray();
+	QJsonArray versions = jsonObj.value(key).toArray();
 	qDebug() << versions;
 	for(QJsonValueRef A: versions) {
 		qDebug() << A.toArray().at(0) << A.toArray().at(1);

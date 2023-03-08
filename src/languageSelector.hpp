@@ -24,7 +24,7 @@ private slots:
 
 private:
 	Ui::languageSelector* ui;
-	Ui::Installer* _installerUi;
+	Ui::Installer* installerUi;
 };
 
 

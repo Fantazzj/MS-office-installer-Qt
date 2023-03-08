@@ -1,7 +1,6 @@
 #include "OfficeDeploymentTool.hpp"
 
 OfficeDeploymentTool::OfficeDeploymentTool() {
-
 }
 
 int OfficeDeploymentTool::install() {
