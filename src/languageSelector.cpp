@@ -9,6 +9,8 @@ languageSelector::languageSelector(QDialog* parent, Ui::Installer* installerUi) 
 }
 
 languageSelector::~languageSelector() {
+	qDebug() << "langUi destroyed";
+	qDebug() << SEPARATOR;
 	delete ui;
 }
 

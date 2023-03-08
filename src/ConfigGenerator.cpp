@@ -28,7 +28,6 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
 	_comboBoxPopulator(_ui->comboBoxVersion, "versions");
 	_comboBoxPopulator(_ui->comboBoxProduct, "product");
 	_comboBoxPopulator(_ui->comboBoxRelease, "releaseChannel");
-
 }
 
 ConfigGenerator::~ConfigGenerator() {
@@ -44,23 +43,23 @@ void ConfigGenerator::createFile(QString nameFile) {
 
 	configXml->writeStartElement("Configuration");
 
-	_writeAddElement(); //Add
+	_writeAddElement();//Add
 
-	_writeProductOfficeElement(); //Product
+	_writeProductOfficeElement();//Product
 	_writeOfficeLangsElements(); //Language
-	_writeExcludeAppElements(); //ExcludeApp
-	configXml->writeEndElement(); //Product
+	_writeExcludeAppElements();	 //ExcludeApp
+	configXml->writeEndElement();//Product
 
-	_writeProductProofingElement(); //Product
+	_writeProductProofingElement();//Product
 	_writeProofingLangsElements(); //Language
-	configXml->writeEndElement(); //Product
+	configXml->writeEndElement();  //Product
 
-	configXml->writeEndElement(); //Add
+	configXml->writeEndElement();//Add
 
-	_writeUpdatesElement(); //Updates
-	configXml->writeEndElement(); //Updates
+	_writeUpdatesElement();		 //Updates
+	configXml->writeEndElement();//Updates
 
-	configXml->writeEndElement(); //Configuration
+	configXml->writeEndElement();//Configuration
 
 	configFile->close();
 }
@@ -87,12 +86,12 @@ void ConfigGenerator::_writeProductProofingElement() {
 
 void ConfigGenerator::_writeOfficeLangsElements() {
 	configXml->writeStartElement("Language");
-	configXml->writeEndElement(); //Language
+	configXml->writeEndElement();//Language
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
 	configXml->writeStartElement("Language");
-	configXml->writeEndElement(); //Language
+	configXml->writeEndElement();//Language
 }
 
 void ConfigGenerator::_writeExcludeAppElements() {
@@ -100,7 +99,7 @@ void ConfigGenerator::_writeExcludeAppElements() {
 		if(!A->isChecked()) {
 			configXml->writeStartElement("ExcludeApp");
 			configXml->writeAttribute("ID", A->objectName().remove("checkBox"));
-			configXml->writeEndElement(); //ExcludeApp
+			configXml->writeEndElement();//ExcludeApp
 		}
 }
 
@@ -119,4 +118,5 @@ void ConfigGenerator::_comboBoxPopulator(QComboBox* comboBox, QString key) {
 		qDebug() << A.toArray().at(0) << A.toArray().at(1);
 		comboBox->addItem(A.toArray().at(0).toString(), A.toArray().at(1).toString());
 	}
+	qDebug() << SEPARATOR;
 }

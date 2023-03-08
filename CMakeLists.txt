@@ -16,6 +16,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
 set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_compile_definitions(QT_NO_DEBUG_OUTPUT)
+    add_compile_definitions(QT_NO_INFO_OUTPUT)
+endif ()
+
+add_compile_definitions(SEPARATOR="------")
+
 set(PROJECT_SOURCES
         main.cpp
         src/installer.hpp
@@ -29,7 +36,7 @@ set(PROJECT_SOURCES
         src/ConfigGenerator.hpp
         src/ConfigGenerator.cpp
         ${TS_FILES}
-        src/languageSelector.cpp src/languageSelector.hpp)
+        )
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
