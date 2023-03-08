@@ -4,7 +4,7 @@
 languageSelector::languageSelector(QDialog* parent, Ui::Installer* installerUi) :
 	QDialog(parent), ui(new Ui::languageSelector) {
 	ui->setupUi(this);
-	installerUi = installerUi;
+	this->installerUi = installerUi;
 	qDebug() << "langUi created";
 }
 
