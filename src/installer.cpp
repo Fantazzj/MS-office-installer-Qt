@@ -3,7 +3,6 @@
 
 Installer::Installer(QWidget* parent) :
 	QMainWindow(parent), ui(new Ui::Installer) {
-
 	ui->setupUi(this);
 
 	/*
@@ -20,8 +19,6 @@ Installer::Installer(QWidget* parent) :
 
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);
-
-	langUi = new languageSelector();
 }
 
 Installer::~Installer() {
@@ -46,5 +43,16 @@ void Installer::on_pushButtonDownloadAndInstall_clicked() {
 }
 
 void Installer::on_toolButtonOfficeSetup_clicked() {
+}
 
+void Installer::on_pushButtonPrdLang_clicked() {
+	auto* langUi = new languageSelector(nullptr, ui);
+	ui->centralwidget->setDisabled(true);
+	langUi->show();
+}
+
+void Installer::on_pushButtonPrfLng_clicked() {
+	auto* langUi = new languageSelector(nullptr, ui);
+	ui->centralwidget->setDisabled(true);
+	langUi->show();
 }

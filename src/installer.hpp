@@ -25,6 +25,8 @@ private slots:
 	void on_pushButtonInstall_clicked();
 	void on_pushButtonDownloadAndInstall_clicked();
 	void on_toolButtonOfficeSetup_clicked();
+	void on_pushButtonPrdLang_clicked();
+	void on_pushButtonPrfLng_clicked();
 
 private:
 	Ui::Installer* ui;
