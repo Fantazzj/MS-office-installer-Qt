@@ -6,6 +6,7 @@
 #include "languageSelector.hpp"
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

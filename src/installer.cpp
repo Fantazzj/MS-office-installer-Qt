@@ -23,7 +23,10 @@ Installer::~Installer() {
 }
 
 void Installer::on_pushButtonExport_clicked() {
-	config->createFile("config.xml");
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
+													"config.xml",
+													tr("Configuration file (*.xml)"));
+	config->createFile(fileName);
 }
 
 void Installer::on_pushButtonDownload_clicked() {
@@ -40,6 +43,8 @@ void Installer::on_pushButtonDownloadAndInstall_clicked() {
 }
 
 void Installer::on_toolButtonOfficeSetup_clicked() {
+	QString dirName = QFileDialog::getExistingDirectory(this, tr("Office extracted files"));
+	ui->lineEditOfficeSetup->setText(dirName);
 }
 
 void Installer::on_pushButtonPrdLang_clicked() {
