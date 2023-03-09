@@ -6,7 +6,8 @@ Installer::Installer(QWidget* parent) :
 	ui->setupUi(this);
 
 	if(!QFile("setup.exe").exists()) {
-		QMessageBox::warning(this, tr("Missing setup.exe"), tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
+		QMessageBox::warning(this, tr("Missing setup.exe"),
+							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
 		ui->pushButtonDownload->setDisabled(true);
 		ui->pushButtonInstall->setDisabled(true);
 		ui->pushButtonDownloadAndInstall->setDisabled(true);
