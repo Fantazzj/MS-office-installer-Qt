@@ -47,6 +47,8 @@ qt_add_executable(MS-office-installer
 
 target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
+qt_add_translations(MS-office-installer TS_FILES ${TS_FILES})
+
 set_target_properties(MS-office-installer PROPERTIES
         WIN32_EXECUTABLE FAlSE #TRUE to prevent creating console
         )
