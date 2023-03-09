@@ -48,13 +48,13 @@ void Installer::on_toolButtonOfficeSetup_clicked() {
 }
 
 void Installer::on_pushButtonPrdLang_clicked() {
-	auto* langUi = new languageSelector(nullptr, ui);
-	ui->centralwidget->setDisabled(true);
+	auto* langUi = new languageSelector(this, ui);
+	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
 void Installer::on_pushButtonPrfLng_clicked() {
-	auto* langUi = new languageSelector(nullptr, ui);
-	ui->centralwidget->setDisabled(true);
+	auto* langUi = new languageSelector(this, ui);
+	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }

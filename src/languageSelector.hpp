@@ -14,7 +14,7 @@ class languageSelector : public QDialog {
 	Q_OBJECT
 
 public:
-	languageSelector(QDialog* parent = nullptr, Ui::Installer* installerUi = nullptr);
+	languageSelector(QMainWindow* parent = nullptr, Ui::Installer* installerUi = nullptr);
 	~languageSelector();
 
 private slots:
