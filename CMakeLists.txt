@@ -14,8 +14,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
-set(TS_FILES translations/MS-office-installer_it_IT.ts)
-
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_compile_definitions(QT_NO_DEBUG_OUTPUT)
     add_compile_definitions(QT_NO_INFO_OUTPUT)
@@ -24,6 +22,8 @@ else ()
 endif ()
 
 add_compile_definitions(SEPARATOR="------")
+
+set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
 set(PROJECT_SOURCES
         main.cpp
