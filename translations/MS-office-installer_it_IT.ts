@@ -6,161 +6,157 @@
     <message>
         <location filename="../src/installer.ui" line="14"/>
         <source>Installer</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="29"/>
         <source>Choose product languages</source>
-        <translation>Scegli lingue di office</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="36"/>
         <source>Choose proofing languages</source>
-        <translation>Scegli lingue per le correzioni</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="56"/>
         <source>OneNote</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="244"/>
-        <source>Version</source>
-        <translation>Versione</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="279"/>
-        <source>Product</source>
-        <translation>Prodotto</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="321"/>
-        <source>Release channel</source>
-        <translation>Canale di release</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="338"/>
-        <source>Automatic updates</source>
-        <translation>Aggiornamenti automatici</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="361"/>
-        <source>File save type</source>
-        <translation>Tipo di files</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="374"/>
-        <source>Open XML (eg. docx)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="387"/>
-        <source>Open Document (eg. odt)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="400"/>
-        <source>Not now</source>
-        <translation>Non ora</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="431"/>
-        <source>Office setup</source>
-        <translation>Setup di Office</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="444"/>
-        <source>...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="72"/>
         <source>Access</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="129"/>
-        <source>Project</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="105"/>
-        <source>Word</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="115"/>
-        <source>SharePointDesigner</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="219"/>
-        <source>InfoPath</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="183"/>
-        <source>Excel</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="455"/>
-        <source>Export configuration</source>
-        <translation>Esporta configurazione</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="462"/>
-        <source>Download</source>
-        <translation>Scarica</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="476"/>
-        <source>Download and install</source>
-        <translation>Scarica e installa</translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="202"/>
-        <source>Publisher</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="164"/>
-        <source>PowerPoint</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="212"/>
-        <source>Groove</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="122"/>
-        <source>Lync</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="82"/>
         <source>Outlook</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/installer.ui" line="145"/>
-        <source>Teams</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="89"/>
         <source>OneDrive</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="105"/>
+        <source>Word</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="115"/>
+        <source>SharePointDesigner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="122"/>
+        <source>Lync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="129"/>
+        <source>Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="145"/>
+        <source>Teams</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="164"/>
+        <source>PowerPoint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="183"/>
+        <source>Excel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="202"/>
+        <source>Publisher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="212"/>
+        <source>Groove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="219"/>
+        <source>InfoPath</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="244"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="279"/>
+        <source>Product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="321"/>
+        <source>Release channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="338"/>
+        <source>Automatic updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="361"/>
+        <source>File save type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="374"/>
+        <source>Open XML (eg. docx)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="387"/>
+        <source>Open Document (eg. odt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="400"/>
+        <source>Not now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="431"/>
+        <source>Office setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="444"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="455"/>
+        <source>Export configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/installer.ui" line="462"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/installer.ui" line="469"/>
         <source>Install</source>
-        <translation>Installa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Choose presets</source>
-        <translation type="vanished">Scegli preset</translation>
+        <location filename="../src/installer.ui" line="476"/>
+        <source>Download and install</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
