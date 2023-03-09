@@ -5,6 +5,7 @@
 #include "OfficeDeploymentTool.hpp"
 #include "languageSelector.hpp"
 #include <QMainWindow>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
