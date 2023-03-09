@@ -13,6 +13,7 @@ Installer::Installer(QWidget* parent) :
 		ui->pushButtonDownloadAndInstall->setDisabled(true);
 	}
 
+	langUi = nullptr;
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);
 }
