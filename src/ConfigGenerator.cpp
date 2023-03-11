@@ -17,22 +17,6 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
 	checkBoxApps.append(installerUi->checkBoxLync);
 	checkBoxApps.append(installerUi->checkBoxProject);
 	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);
-
-#ifdef DEBUG
-	QFile jsonFile = QFile("../res/contents.json");
-#else
-	QFile jsonFile = QFile("contents.json");
-#endif
-
-	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString dummy = jsonFile.readAll();
-	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
-	jsonFile.close();
-	jsonObj = jsonDoc.object();
-
-	_comboBoxPopulator(installerUi->comboBoxVersion, "versions");
-	_comboBoxPopulator(installerUi->comboBoxProduct, "product");
-	_comboBoxPopulator(installerUi->comboBoxRelease, "releaseChannel");
 }
 
 ConfigGenerator::~ConfigGenerator() {
@@ -114,14 +98,4 @@ void ConfigGenerator::_writeUpdatesElement() {
 		configXml->writeAttribute("Enabled", "TRUE");
 	else
 		configXml->writeAttribute("Enabled", "FALSE");
-}
-
-void ConfigGenerator::_comboBoxPopulator(QComboBox* comboBox, QString key) {
-	QJsonArray versions = jsonObj.value(key).toArray();
-	qDebug() << versions;
-	for(QJsonValueRef A: versions) {
-		qDebug() << A.toArray().at(0) << A.toArray().at(1);
-		comboBox->addItem(A.toArray().at(0).toString(), A.toArray().at(1).toString());
-	}
-	qDebug() << SEPARATOR;
 }

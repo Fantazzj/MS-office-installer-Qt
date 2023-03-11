@@ -13,6 +13,22 @@ Installer::Installer(QWidget* parent) :
 		ui->pushButtonDownloadAndInstall->setDisabled(true);
 	}
 
+#ifdef DEBUG
+	QFile jsonFile = QFile("../res/contents.json");
+#else
+	QFile jsonFile = QFile("contents.json");
+#endif
+
+	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
+	QString dummy = jsonFile.readAll();
+	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
+	jsonFile.close();
+	jsonObj = jsonDoc.object();
+
+	_comboBoxPopulator(ui->comboBoxVersion, "versions");
+	_comboBoxPopulator(ui->comboBoxProduct, "product");
+	_comboBoxPopulator(ui->comboBoxRelease, "releaseChannel");
+
 	langUi = nullptr;
 	office = new OfficeDeploymentTool();
 	config = new ConfigGenerator(ui);
@@ -57,4 +73,14 @@ void Installer::on_pushButtonPrfLng_clicked() {
 	auto* langUi = new languageSelector(this, ui);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
+}
+
+void Installer::_comboBoxPopulator(QComboBox* comboBox, QString key) {
+	QJsonArray versions = jsonObj.value(key).toArray();
+	qDebug() << versions;
+	for(QJsonValueRef A: versions) {
+		qDebug() << A.toArray().at(0) << A.toArray().at(1);
+		comboBox->addItem(A.toArray().at(0).toString(), A.toArray().at(1).toString());
+	}
+	qDebug() << SEPARATOR;
 }

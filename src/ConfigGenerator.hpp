@@ -20,7 +20,6 @@ public:
 private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
-	QJsonObject jsonObj;
 	Ui::Installer* installerUi;
 	QVector<QCheckBox*> checkBoxApps;
 	void _writeAddElement();
@@ -30,7 +29,6 @@ private:
 	void _writeProofingLangsElements();
 	void _writeExcludeAppElements();
 	void _writeUpdatesElement();
-	void _comboBoxPopulator(QComboBox* comboBox, QString key);
 };
 
 #endif//CONFIGGENERATOR_HPP

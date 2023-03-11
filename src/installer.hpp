@@ -35,5 +35,7 @@ private:
 	languageSelector* langUi;
 	ConfigGenerator* config;
 	OfficeDeploymentTool* office;
+	QJsonObject jsonObj;
+	void _comboBoxPopulator(QComboBox* comboBox, QString key);
 };
 #endif//INSTALLER_HPP
