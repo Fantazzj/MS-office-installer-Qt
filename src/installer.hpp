@@ -22,13 +22,13 @@ public:
 	~Installer();
 
 private slots:
-	[[maybe_unused]] [[maybe_unused]] void on_pushButtonExport_clicked();
+	[[maybe_unused]] void on_pushButtonExport_clicked();
 	[[maybe_unused]] void on_pushButtonDownload_clicked();
 	[[maybe_unused]] void on_pushButtonInstall_clicked();
-	[[maybe_unused]] [[maybe_unused]] void on_pushButtonDownloadAndInstall_clicked();
+	[[maybe_unused]] void on_pushButtonDownloadAndInstall_clicked();
 	[[maybe_unused]] void on_toolButtonOfficeSetup_clicked();
-	[[maybe_unused]] [[maybe_unused]] void on_pushButtonPrdLang_clicked();
-	[[maybe_unused]] [[maybe_unused]] void on_pushButtonPrfLng_clicked();
+	[[maybe_unused]] void on_pushButtonPrdLang_clicked();
+	[[maybe_unused]] void on_pushButtonPrfLng_clicked();
 
 private:
 	Ui::Installer* ui;
