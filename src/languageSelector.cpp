@@ -1,10 +1,10 @@
 #include "languageSelector.hpp"
 #include "ui_languageSelector.h"
 
-languageSelector::languageSelector(QMainWindow* parent, Ui::Installer* installerUi) :
+languageSelector::languageSelector(QMainWindow* parent) :
 	QDialog(parent, Qt::Dialog), ui(new Ui::languageSelector) {
 	ui->setupUi(this);
-	this->installerUi = installerUi;
+	installer = dynamic_cast<Installer*>(parent);
 	qDebug() << "langUi created";
 }
 

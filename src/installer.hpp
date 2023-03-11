@@ -20,6 +20,9 @@ class Installer : public QMainWindow {
 public:
 	Installer(QWidget* parent = nullptr);
 	~Installer();
+	QJsonObject getJsonObj();
+	void setPrdLanguages(QStringList productLangs);
+	void setPrfLanguages(QStringList proofingLangs);
 
 private slots:
 	[[maybe_unused]] void on_pushButtonExport_clicked();
@@ -34,6 +37,8 @@ private:
 	Ui::Installer* ui;
 	OfficeDeploymentTool* office;
 	QJsonObject jsonObj;
+	QStringList productLangs;
+	QStringList proofingLangs;
 	void comboBoxPopulator(QComboBox* comboBox, const QString& key);
 };
 #endif//INSTALLER_HPP

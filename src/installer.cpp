@@ -38,8 +38,8 @@ Installer::~Installer() {
 
 [[maybe_unused]] void Installer::on_pushButtonExport_clicked() {
 	auto fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
-													"config.xml",
-													tr("Configuration file (*.xml)"));
+												 "config.xml",
+												 tr("Configuration file (*.xml)"));
 	if(!fileName.isEmpty()) {
 		ConfigGenerator config = ConfigGenerator(ui, fileName);
 		config.createFile();
@@ -65,13 +65,13 @@ void Installer::on_pushButtonInstall_clicked() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
-	auto* langUi = new languageSelector(this, ui);
+	auto* langUi = new languageSelector(this);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrfLng_clicked() {
-	auto* langUi = new languageSelector(this, ui);
+	auto* langUi = new languageSelector(this);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
@@ -84,4 +84,16 @@ void Installer::comboBoxPopulator(QComboBox* comboBox, const QString& key) {
 		comboBox->addItem(A.toArray().at(0).toString(), A.toArray().at(1).toString());
 	}
 	qDebug() << SEPARATOR;
+}
+
+void Installer::setPrdLanguages(QStringList productLangs) {
+	this->productLangs = productLangs;
+}
+
+void Installer::setPrfLanguages(QStringList proofingLangs) {
+	this->proofingLangs = proofingLangs;
+}
+
+QJsonObject Installer::getJsonObj() {
+	return jsonObj;
 }

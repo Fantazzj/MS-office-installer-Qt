@@ -2,6 +2,7 @@
 #define LANGUAGESELECTOR_HPP
 
 #include "ui_installer.h"
+#include "installer.hpp"
 #include <QDialog>
 
 QT_BEGIN_NAMESPACE
@@ -10,11 +11,13 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
+class Installer;
+
 class languageSelector : public QDialog {
 	Q_OBJECT
 
 public:
-	languageSelector(QMainWindow* parent = nullptr, Ui::Installer* installerUi = nullptr);
+	languageSelector(QMainWindow* parent = nullptr);
 	~languageSelector();
 
 private slots:
@@ -24,7 +27,7 @@ private slots:
 
 private:
 	Ui::languageSelector* ui;
-	Ui::Installer* installerUi;
+	Installer* installer;
 };
 
 
