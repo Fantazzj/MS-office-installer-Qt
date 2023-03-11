@@ -20,7 +20,7 @@ Installer::Installer(QWidget* parent) :
 #endif
 
 	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
-	auto dummy = jsonFile.readAll();
+	QString dummy = jsonFile.readAll();
 	auto jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
 	jsonFile.close();
 	jsonObj = jsonDoc.object();
