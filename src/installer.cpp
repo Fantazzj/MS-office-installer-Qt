@@ -29,9 +29,7 @@ Installer::Installer(QWidget* parent) :
 	_comboBoxPopulator(ui->comboBoxProduct, "product");
 	_comboBoxPopulator(ui->comboBoxRelease, "releaseChannel");
 
-	langUi = nullptr;
 	office = new OfficeDeploymentTool();
-	config = new ConfigGenerator(ui);
 }
 
 Installer::~Installer() {
@@ -42,7 +40,10 @@ void Installer::on_pushButtonExport_clicked() {
 	auto fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
 													"config.xml",
 													tr("Configuration file (*.xml)"));
-	if(!fileName.isEmpty())config->createFile(fileName);
+	if(!fileName.isEmpty()) {
+		ConfigGenerator config = ConfigGenerator(ui, fileName);
+		config.createFile();
+	}
 }
 
 void Installer::on_pushButtonDownload_clicked() {
