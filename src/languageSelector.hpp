@@ -35,6 +35,7 @@ private:
 	Ui::languageSelector* ui;
 	Installer* installer;
 	CallType callType;
+	void widgetPopulator(QWidget* widget);
 };
 
 

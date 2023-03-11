@@ -6,7 +6,11 @@ languageSelector::languageSelector(QMainWindow* parent, CallType callType) :
 	ui->setupUi(this);
 	installer = dynamic_cast<Installer*>(parent);
 	this->callType = callType;
+
+	widgetPopulator(ui->widget);
+
 	qDebug() << "langUi created";
+	qDebug() << "call type:" << callType;
 }
 
 languageSelector::~languageSelector() {
@@ -30,4 +34,7 @@ languageSelector::~languageSelector() {
 void languageSelector::reject() {
 	qDebug() << "cancel";
 	delete this;
+}
+void languageSelector::widgetPopulator(QWidget* widget) {
+
 }
