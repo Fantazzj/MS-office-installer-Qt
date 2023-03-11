@@ -1,9 +1,10 @@
 #ifndef LANGUAGESELECTOR_HPP
 #define LANGUAGESELECTOR_HPP
 
-#include "ui_installer.h"
 #include "installer.hpp"
+#include "ui_installer.h"
 #include <QDialog>
+#include <QScrollArea>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,8 +36,7 @@ private:
 	Ui::languageSelector* ui;
 	Installer* installer;
 	CallType callType;
-	void widgetPopulator(QWidget* widget);
+	void widgetPopulator(QScrollArea* scrollArea);
 };
-
 
 #endif//LANGUAGESELECTOR_HPP

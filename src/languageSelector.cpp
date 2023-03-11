@@ -7,7 +7,7 @@ languageSelector::languageSelector(QMainWindow* parent, CallType callType) :
 	installer = dynamic_cast<Installer*>(parent);
 	this->callType = callType;
 
-	widgetPopulator(ui->widget);
+	widgetPopulator(ui->scrollArea);
 
 	qDebug() << "langUi created";
 	qDebug() << "call type:" << callType;
@@ -35,6 +35,17 @@ void languageSelector::reject() {
 	qDebug() << "cancel";
 	delete this;
 }
-void languageSelector::widgetPopulator(QWidget* widget) {
 
+void languageSelector::widgetPopulator(QScrollArea* scrollArea) {
+	auto jsonObj = installer->getJsonObj();
+	auto languages = jsonObj.value("languages").toArray();
+
+	QVBoxLayout* layout = new QVBoxLayout();
+	for(auto l: languages) {
+		qDebug() << l.toArray().at(0) << l.toArray().at(1);
+		QCheckBox* checkBox = new QCheckBox(l.toArray().at(0).toString());
+		layout->addWidget(checkBox);
+	}
+
+	scrollArea->setLayout(layout);
 }
