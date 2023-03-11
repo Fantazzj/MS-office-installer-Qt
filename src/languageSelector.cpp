@@ -14,12 +14,12 @@ languageSelector::~languageSelector() {
 	delete ui;
 }
 
-void languageSelector::on_buttonBox_accepted() {
+[[maybe_unused]] void languageSelector::on_buttonBox_accepted() {
 	qDebug() << "confirm";
 	delete this;
 }
 
-void languageSelector::on_buttonBox_rejected() {
+[[maybe_unused]] void languageSelector::on_buttonBox_rejected() {
 	reject();
 }
 void languageSelector::reject() {

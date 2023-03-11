@@ -22,18 +22,18 @@ public:
 	~Installer();
 
 private slots:
-	void on_pushButtonExport_clicked();
-	void on_pushButtonDownload_clicked();
-	void on_pushButtonInstall_clicked();
-	void on_pushButtonDownloadAndInstall_clicked();
-	void on_toolButtonOfficeSetup_clicked();
-	void on_pushButtonPrdLang_clicked();
-	void on_pushButtonPrfLng_clicked();
+	[[maybe_unused]] [[maybe_unused]] void on_pushButtonExport_clicked();
+	[[maybe_unused]] void on_pushButtonDownload_clicked();
+	[[maybe_unused]] void on_pushButtonInstall_clicked();
+	[[maybe_unused]] [[maybe_unused]] void on_pushButtonDownloadAndInstall_clicked();
+	[[maybe_unused]] void on_toolButtonOfficeSetup_clicked();
+	[[maybe_unused]] [[maybe_unused]] void on_pushButtonPrdLang_clicked();
+	[[maybe_unused]] [[maybe_unused]] void on_pushButtonPrfLng_clicked();
 
 private:
 	Ui::Installer* ui;
 	OfficeDeploymentTool* office;
 	QJsonObject jsonObj;
-	void _comboBoxPopulator(QComboBox* comboBox, QString key);
+	void comboBoxPopulator(QComboBox* comboBox, const QString& key);
 };
 #endif//INSTALLER_HPP

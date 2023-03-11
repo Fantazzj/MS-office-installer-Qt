@@ -25,9 +25,9 @@ Installer::Installer(QWidget* parent) :
 	jsonFile.close();
 	jsonObj = jsonDoc.object();
 
-	_comboBoxPopulator(ui->comboBoxVersion, "versions");
-	_comboBoxPopulator(ui->comboBoxProduct, "product");
-	_comboBoxPopulator(ui->comboBoxRelease, "releaseChannel");
+	comboBoxPopulator(ui->comboBoxVersion, "versions");
+	comboBoxPopulator(ui->comboBoxProduct, "product");
+	comboBoxPopulator(ui->comboBoxRelease, "releaseChannel");
 
 	office = new OfficeDeploymentTool();
 }
@@ -36,7 +36,7 @@ Installer::~Installer() {
 	delete ui;
 }
 
-void Installer::on_pushButtonExport_clicked() {
+[[maybe_unused]] void Installer::on_pushButtonExport_clicked() {
 	auto fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
 													"config.xml",
 													tr("Configuration file (*.xml)"));
@@ -54,29 +54,29 @@ void Installer::on_pushButtonInstall_clicked() {
 	office->install();
 }
 
-void Installer::on_pushButtonDownloadAndInstall_clicked() {
+[[maybe_unused]] void Installer::on_pushButtonDownloadAndInstall_clicked() {
 	on_pushButtonDownload_clicked();
 	on_pushButtonInstall_clicked();
 }
 
-void Installer::on_toolButtonOfficeSetup_clicked() {
+[[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {
 	auto dirName = QFileDialog::getExistingDirectory(this, tr("Office extracted files"));
 	ui->lineEditOfficeSetup->setText(dirName);
 }
 
-void Installer::on_pushButtonPrdLang_clicked() {
+[[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
 	auto* langUi = new languageSelector(this, ui);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
-void Installer::on_pushButtonPrfLng_clicked() {
+[[maybe_unused]] void Installer::on_pushButtonPrfLng_clicked() {
 	auto* langUi = new languageSelector(this, ui);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
-void Installer::_comboBoxPopulator(QComboBox* comboBox, QString key) {
+void Installer::comboBoxPopulator(QComboBox* comboBox, const QString& key) {
 	QJsonArray versions = jsonObj.value(key).toArray();
 	qDebug() << versions;
 	for(QJsonValueRef A: versions) {

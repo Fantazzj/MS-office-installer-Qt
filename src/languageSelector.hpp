@@ -18,8 +18,8 @@ public:
 	~languageSelector();
 
 private slots:
-	void on_buttonBox_accepted();
-	void on_buttonBox_rejected();
+	[[maybe_unused]] void on_buttonBox_accepted();
+	[[maybe_unused]] void on_buttonBox_rejected();
 	void reject() override;
 
 private:
