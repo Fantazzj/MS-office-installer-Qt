@@ -13,9 +13,9 @@
 
 class ConfigGenerator {
 public:
-	ConfigGenerator(Ui::Installer* ui);
+	ConfigGenerator(Ui::Installer* ui, const QString& fileName);
 	~ConfigGenerator();
-	void createFile(QString nameFile);
+	void createFile();
 
 private:
 	QFile* configFile;

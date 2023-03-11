@@ -1,6 +1,6 @@
 #include "ConfigGenerator.hpp"
 
-ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
+ConfigGenerator::ConfigGenerator(Ui::Installer* ui, const QString& fileName) {
 	installerUi = ui;
 
 	checkBoxApps.append(installerUi->checkBoxWord);
@@ -17,17 +17,17 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui) {
 	checkBoxApps.append(installerUi->checkBoxLync);
 	checkBoxApps.append(installerUi->checkBoxProject);
 	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);
+
+	configFile = new QFile(fileName);
+	configFile->open(QIODevice::WriteOnly | QIODevice::Text);
+	configXml = new QXmlStreamWriter(configFile);
 }
 
 ConfigGenerator::~ConfigGenerator() {
-	if(configFile->isOpen()) configFile->close();
+	if(configFile!= nullptr && configFile->isOpen()) configFile->close();
 }
 
-void ConfigGenerator::createFile(QString nameFile) {
-	configFile = new QFile(nameFile);
-	configFile->open(QIODevice::WriteOnly | QIODevice::Text);
-	configXml = new QXmlStreamWriter(configFile);
-
+void ConfigGenerator::createFile() {
 	configXml->setAutoFormatting(true);
 
 	configXml->writeStartElement("Configuration");
@@ -54,11 +54,8 @@ void ConfigGenerator::createFile(QString nameFile) {
 }
 
 void ConfigGenerator::_writeAddElement() {
-	QString version = "64";
-	QString channel = "Current";
-
-	version = installerUi->comboBoxVersion->currentData().toString();
-	channel = installerUi->comboBoxRelease->currentText();
+	QString version = installerUi->comboBoxVersion->currentData().toString();
+	QString channel = installerUi->comboBoxRelease->currentText();
 
 	configXml->writeStartElement("Add");
 	configXml->writeAttribute("OfficeClientEdition", version);
