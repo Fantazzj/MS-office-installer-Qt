@@ -14,14 +14,14 @@ Installer::Installer(QWidget* parent) :
 	}
 
 #ifdef DEBUG
-	QFile jsonFile = QFile("../res/contents.json");
+	auto jsonFile = QFile("../res/contents.json");
 #else
-	QFile jsonFile = QFile("contents.json");
+	auto jsonFile = QFile("contents.json");
 #endif
 
 	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString dummy = jsonFile.readAll();
-	QJsonDocument jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
+	auto dummy = jsonFile.readAll();
+	auto jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
 	jsonFile.close();
 	jsonObj = jsonDoc.object();
 
@@ -41,7 +41,7 @@ Installer::~Installer() {
 												 "config.xml",
 												 tr("Configuration file (*.xml)"));
 	if(!fileName.isEmpty()) {
-		ConfigGenerator config = ConfigGenerator(ui, fileName);
+		auto config = ConfigGenerator(ui, fileName);
 		config.createFile();
 	}
 }
@@ -65,19 +65,19 @@ void Installer::on_pushButtonInstall_clicked() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
-	auto* langUi = new languageSelector(this);
+	auto* langUi = new languageSelector(this, CallType::Product);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrfLng_clicked() {
-	auto* langUi = new languageSelector(this);
+	auto* langUi = new languageSelector(this, CallType::Proofing);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
 void Installer::comboBoxPopulator(QComboBox* comboBox, const QString& key) {
-	QJsonArray versions = jsonObj.value(key).toArray();
+	auto versions = jsonObj.value(key).toArray();
 	qDebug() << versions;
 	for(QJsonValueRef A: versions) {
 		qDebug() << A.toArray().at(0) << A.toArray().at(1);

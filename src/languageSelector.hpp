@@ -13,11 +13,17 @@ QT_END_NAMESPACE
 
 class Installer;
 
+enum CallType {
+	None,
+	Product,
+	Proofing
+};
+
 class languageSelector : public QDialog {
 	Q_OBJECT
 
 public:
-	languageSelector(QMainWindow* parent = nullptr);
+	languageSelector(QMainWindow* parent = nullptr, CallType callType = None);
 	~languageSelector();
 
 private slots:
@@ -28,6 +34,7 @@ private slots:
 private:
 	Ui::languageSelector* ui;
 	Installer* installer;
+	CallType callType;
 };
 
 
