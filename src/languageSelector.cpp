@@ -40,12 +40,23 @@ void languageSelector::widgetPopulator(QScrollArea* scrollArea) {
 	auto jsonObj = installer->getJsonObj();
 	auto languages = jsonObj.value("languages").toArray();
 
-	QVBoxLayout* layout = new QVBoxLayout();
+	auto layout = new QGridLayout();
+
+	int i=0, j=0;
 	for(auto l: languages) {
 		qDebug() << l.toArray().at(0) << l.toArray().at(1);
-		QCheckBox* checkBox = new QCheckBox(l.toArray().at(0).toString());
-		layout->addWidget(checkBox);
+		auto checkBox = new QCheckBox(l.toArray().at(0).toString());
+		layout->addWidget(checkBox, i, j++);
+		if(j>=3) {i++; j=0;}
 	}
 
-	scrollArea->setLayout(layout);
+/*	for(int k=0; k<20; k++) {
+		auto checkBox = new QCheckBox("NNN"+QString::number(k));
+		layout->addWidget(checkBox, i, j++);
+		if(j>=3) {i++; j=0;}
+	}*/
+
+	auto widget = new QWidget();
+	widget->setLayout(layout);
+	scrollArea->setWidget(widget);
 }
