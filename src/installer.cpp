@@ -42,7 +42,7 @@ Installer::~Installer() {
 												 "config.xml",
 												 tr("Configuration file (*.xml)"));
 	if(!fileName.isEmpty()) {
-		auto config = ConfigGenerator(ui, fileName);
+		auto config = ConfigGenerator(this, fileName);
 		config.createFile();
 	}
 }
@@ -97,4 +97,7 @@ void Installer::setPrfLanguages(QStringList proofingLangs) {
 
 QJsonObject Installer::getJsonObj() {
 	return jsonObj;
+}
+Ui::Installer* Installer::getUi() {
+	return ui;
 }

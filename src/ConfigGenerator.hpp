@@ -13,9 +13,11 @@
 #include "installer.hpp"
 #include "ui_installer.h"
 
+class Installer;
+
 class ConfigGenerator {
 public:
-	ConfigGenerator(Ui::Installer* ui, const QString& fileName);
+	ConfigGenerator(Installer* installer, const QString& fileName);
 	~ConfigGenerator();
 	void createFile();
 
@@ -23,6 +25,7 @@ private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
 	Ui::Installer* installerUi;
+	Installer* installer;
 	QVector<QCheckBox*> checkBoxApps;
 	void _writeAddElement();
 	void _writeProductOfficeElement();

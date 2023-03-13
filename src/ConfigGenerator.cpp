@@ -1,7 +1,8 @@
 #include "ConfigGenerator.hpp"
 
-ConfigGenerator::ConfigGenerator(Ui::Installer* ui, const QString& fileName) {
-	installerUi = ui;
+ConfigGenerator::ConfigGenerator(Installer* installer, const QString& fileName) {
+	this->installer = installer;
+	installerUi = installer->getUi();
 
 	checkBoxApps.append(installerUi->checkBoxWord);
 	checkBoxApps.append(installerUi->checkBoxPowerPoint);
@@ -24,7 +25,7 @@ ConfigGenerator::ConfigGenerator(Ui::Installer* ui, const QString& fileName) {
 }
 
 ConfigGenerator::~ConfigGenerator() {
-	if(configFile!= nullptr && configFile->isOpen()) configFile->close();
+	if(configFile != nullptr && configFile->isOpen()) configFile->close();
 }
 
 void ConfigGenerator::createFile() {
@@ -55,7 +56,7 @@ void ConfigGenerator::createFile() {
 
 void ConfigGenerator::_writeAddElement() {
 	QString version = installerUi->comboBoxVersion->currentData().toString();
-	QString channel = installerUi->comboBoxRelease->currentText();
+	QString channel = installerUi->comboBoxRelease->currentData().toString();
 
 	configXml->writeStartElement("Add");
 	configXml->writeAttribute("OfficeClientEdition", version);
@@ -63,21 +64,31 @@ void ConfigGenerator::_writeAddElement() {
 }
 
 void ConfigGenerator::_writeProductOfficeElement() {
+	auto release = installerUi->comboBoxProduct->currentData().toString();
+
 	configXml->writeStartElement("Product");
+	configXml->writeAttribute("ID", release);
 }
 
 void ConfigGenerator::_writeProductProofingElement() {
 	configXml->writeStartElement("Product");
+	configXml->writeAttribute("ID", "ProofingTools");
 }
 
 void ConfigGenerator::_writeOfficeLangsElements() {
-	configXml->writeStartElement("Language");
-	configXml->writeEndElement();//Language
+	for(auto L: installer->productLangs) {
+		configXml->writeStartElement("Language");
+		configXml->writeAttribute("ID", L);
+		configXml->writeEndElement();//Language
+	}
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
-	configXml->writeStartElement("Language");
-	configXml->writeEndElement();//Language
+	for(auto L: installer->proofingLangs) {
+		configXml->writeStartElement("Language");
+		configXml->writeAttribute("ID", L);
+		configXml->writeEndElement();//Language
+	}
 }
 
 void ConfigGenerator::_writeExcludeAppElements() {
