@@ -65,7 +65,7 @@ void Installer::on_pushButtonInstall_clicked() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
-	auto* langUi = new languageSelector(this, CallType::Product);
+	auto langUi = new languageSelector(this, CallType::Product);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }

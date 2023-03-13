@@ -36,6 +36,7 @@ private:
 	Ui::languageSelector* ui;
 	Installer* installer;
 	CallType callType;
+	QVector<QCheckBox*> checkBoxLangs;
 	void widgetPopulator(QScrollArea* scrollArea);
 };
 

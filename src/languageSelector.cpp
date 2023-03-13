@@ -21,10 +21,24 @@ languageSelector::~languageSelector() {
 
 [[maybe_unused]] void languageSelector::on_buttonBox_accepted() {
 	qDebug() << "confirm";
+	QStringList langsList;
+
+	auto jsonObj = installer->getJsonObj();
+	auto languages = jsonObj.value("languages").toArray();
+
+	for(auto C: checkBoxLangs)
+		if(C->isChecked())
+			for(auto L: languages)
+				if(C->text() == L.toArray().at(0).toString())
+					langsList.append(L.toArray().at(1).toString());
+
+	qDebug() << "selected languages:";
+	qDebug() << langsList;
+
 	if(callType == CallType::Product)
-		;
+		installer->setPrdLanguages(langsList);
 	else if(callType == CallType::Proofing)
-		;
+		installer->setPrfLanguages(langsList);
 	delete this;
 }
 
@@ -46,6 +60,7 @@ void languageSelector::widgetPopulator(QScrollArea* scrollArea) {
 	for(auto l: languages) {
 		qDebug() << l.toArray().at(0) << l.toArray().at(1);
 		auto checkBox = new QCheckBox(l.toArray().at(0).toString());
+		checkBoxLangs.append(checkBox);
 		layout->addWidget(checkBox, i, j++);
 		if(j>=3) {i++; j=0;}
 	}
