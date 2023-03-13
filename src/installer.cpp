@@ -1,4 +1,5 @@
 #include "installer.hpp"
+
 #include "ui_installer.h"
 
 Installer::Installer(QWidget* parent) :

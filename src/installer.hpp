@@ -1,12 +1,13 @@
 #ifndef INSTALLER_HPP
 #define INSTALLER_HPP
 
-#include "ConfigGenerator.hpp"
-#include "OfficeDeploymentTool.hpp"
-#include "languageSelector.hpp"
+#include <QFileDialog>
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QFileDialog>
+
+#include "ConfigGenerator.hpp"
+#include "languageSelector.hpp"
+#include "OfficeDeploymentTool.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

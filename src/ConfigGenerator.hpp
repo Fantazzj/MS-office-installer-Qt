@@ -1,7 +1,6 @@
 #ifndef CONFIGGENERATOR_HPP
 #define CONFIGGENERATOR_HPP
 
-#include "ui_installer.h"
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -10,6 +9,9 @@
 #include <QStandardItemModel>
 #include <QVector>
 #include <QXmlStreamWriter>
+
+#include "installer.hpp"
+#include "ui_installer.h"
 
 class ConfigGenerator {
 public:

@@ -1,10 +1,11 @@
 #ifndef LANGUAGESELECTOR_HPP
 #define LANGUAGESELECTOR_HPP
 
-#include "installer.hpp"
-#include "ui_installer.h"
 #include <QDialog>
 #include <QScrollArea>
+
+#include "installer.hpp"
+#include "ui_installer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
