@@ -1,23 +1,4 @@
 {
-  "presets": [
-    {
-      "name": "School",
-      "apps": [
-        "Word",
-        "Powerpoint",
-        "Excel",
-        "Teams"
-      ]
-    },
-    {
-      "name": "Home",
-      "apps": [
-        "Word",
-        "Powerpoint",
-        "Excel"
-      ]
-    }
-  ],
   "versions": [
     ["32 bit", "32"],
     ["64 bit", "64"]
