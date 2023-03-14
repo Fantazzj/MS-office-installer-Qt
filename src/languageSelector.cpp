@@ -29,8 +29,10 @@ languageSelector::~languageSelector() {
 	for(auto C: checkBoxLangs)
 		if(C->isChecked())
 			for(auto L: languages)
-				if(C->text() == L.toArray().at(0).toString())
+				if(C->text() == L.toArray().at(0).toString()) {
 					langsList.append(L.toArray().at(1).toString());
+					break;
+				}
 
 	qDebug() << "selected languages:";
 	qDebug() << langsList;
