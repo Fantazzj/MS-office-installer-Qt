@@ -36,9 +36,9 @@ languageSelector::~languageSelector() {
 	qDebug() << langsList;
 
 	if(callType == CallType::Product)
-		installer->setPrdLanguages(langsList);
+		installer->productLangs = langsList;
 	else if(callType == CallType::Proofing)
-		installer->setPrfLanguages(langsList);
+		installer->proofingLangs = langsList;
 	delete this;
 }
 

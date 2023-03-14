@@ -87,14 +87,6 @@ void Installer::comboBoxPopulator(QComboBox* comboBox, const QString& key) {
 	qDebug() << SEPARATOR;
 }
 
-void Installer::setPrdLanguages(QStringList productLangs) {
-	this->productLangs = productLangs;
-}
-
-void Installer::setPrfLanguages(QStringList proofingLangs) {
-	this->proofingLangs = proofingLangs;
-}
-
 QJsonObject Installer::getJsonObj() {
 	return jsonObj;
 }

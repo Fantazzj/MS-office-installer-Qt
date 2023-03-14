@@ -25,8 +25,6 @@ public:
 	QStringList proofingLangs;
 	QJsonObject getJsonObj();
 	Ui::Installer* getUi();
-	void setPrdLanguages(QStringList productLangs); //TODO remove
-	void setPrfLanguages(QStringList proofingLangs); //TODO remove
 
 private slots:
 	[[maybe_unused]] void on_pushButtonExport_clicked();
