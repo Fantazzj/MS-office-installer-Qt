@@ -34,6 +34,7 @@ private:
 	void _writeProofingLangsElements();
 	void _writeExcludeAppElements();
 	void _writeUpdatesElement();
+	void _writeSaveFileType();
 };
 
 #endif//CONFIGGENERATOR_HPP

@@ -49,6 +49,13 @@ void ConfigGenerator::createFile() {
 	_writeUpdatesElement();		 //Updates
 	configXml->writeEndElement();//Updates
 
+	configXml->writeStartElement("RemoveMSI");
+	configXml->writeEndElement();//RemoveMSI
+
+	configXml->writeStartElement("AppSettings");
+	_writeSaveFileType();
+	configXml->writeEndElement();//AppSettings
+
 	configXml->writeEndElement();//Configuration
 
 	configFile->close();
@@ -106,4 +113,43 @@ void ConfigGenerator::_writeUpdatesElement() {
 		configXml->writeAttribute("Enabled", "TRUE");
 	else
 		configXml->writeAttribute("Enabled", "FALSE");
+}
+
+void ConfigGenerator::_writeSaveFileType() {
+
+	if(installerUi->radioButton->isChecked())
+		return;
+
+	if(installerUi->radioButtonOpenXml->isChecked()) {
+		//word
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\word\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "");
+		configXml->writeAttribute("Type", "REG_SZ");
+		configXml->writeAttribute("App", "word16");
+		configXml->writeAttribute("Id", "L_SaveWordfilesas");
+		configXml->writeEndElement();
+		//powerpoint
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\powerpoint\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "27");
+		configXml->writeAttribute("Type", "REG_DWORD");
+		configXml->writeAttribute("App", "ppt16");
+		configXml->writeAttribute("Id", "L_SavePowerPointfilesas");
+		configXml->writeEndElement();
+		//excel
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\excel\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "51");
+		configXml->writeAttribute("Type", "REG_DWORD");
+		configXml->writeAttribute("App", "excel16");
+		configXml->writeAttribute("Id", "L_SaveExcelfilesas");
+		configXml->writeEndElement();
+	}
+	else if(installerUi->radioButtonOpenDocument->isChecked()) {
+
+	}
 }
