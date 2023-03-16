@@ -1,16 +1,16 @@
 {
   "versions": [
-    ["32 bit", "32"],
-    ["64 bit", "64"]
+    ["64 bit", "64"],
+    ["32 bit", "32"]
   ],
   "product": [
     ["Office 365 Enterprise", "O365ProPlusRetail"],
     ["Office 365 Business", "O365BusinessRetail"]
   ],
   "releaseChannel": [
+    ["Current", "Current"],
     ["Beta", "BetaChannel"],
     ["Current Preview", "CurrentPreview"],
-    ["Current", "Current"],
     ["Monthly Enterprise", "MonthlyEnterprise"],
     ["Semi-Annual Preview", "SemiAnnualPreview"],
     ["Semi-Annual", "SemiAnnual"]

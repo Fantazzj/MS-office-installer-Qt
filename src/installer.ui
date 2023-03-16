@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
-    <height>356</height>
+    <width>538</width>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -104,6 +104,9 @@
         <property name="text">
          <string>Word</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
         <property name="tristate">
          <bool>false</bool>
         </property>
@@ -163,6 +166,9 @@
         <property name="text">
          <string>PowerPoint</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
         <property name="tristate">
          <bool>false</bool>
         </property>
@@ -181,6 +187,9 @@
         </property>
         <property name="text">
          <string>Excel</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
         <property name="tristate">
          <bool>false</bool>
@@ -373,6 +382,9 @@
           <property name="text">
            <string>Open XML (eg. docx)</string>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -400,7 +412,7 @@
            <string>Not now</string>
           </property>
           <property name="checked">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
