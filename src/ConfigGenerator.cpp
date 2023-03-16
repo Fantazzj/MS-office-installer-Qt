@@ -91,6 +91,9 @@ void ConfigGenerator::_writeOfficeLangsElements() {
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
+	if(installer->proofingLangs.isEmpty()) {
+		qDebug() << QLocale::system().uiLanguages().at(0);
+	}
 	for(auto L: installer->proofingLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
