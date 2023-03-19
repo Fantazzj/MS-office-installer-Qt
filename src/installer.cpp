@@ -42,15 +42,29 @@ Installer::~Installer() {
 												 "config.xml",
 												 tr("Configuration file (*.xml)"));
 	if(!fileName.isEmpty()) {
-
 		if(productLangs.isEmpty()) {
-			QMessageBox::question(this, "unga bunga", "bunga unga");
-			return;
+			auto reply = QMessageBox::question(this,
+											   tr("Missing languages"),
+											   tr("You did not choose any language for product, load it from your os language?"));
+
+			if(reply == QMessageBox::Yes) {
+				qDebug() << QLocale::system().uiLanguages().at(0);
+				productLangs.append(QLocale::system().uiLanguages().at(0));
+			} else return;
 		}
 
+		/*
 		if(proofingLangs.isEmpty()) {
-			return;
+			auto reply = QMessageBox::question(this,
+											   tr("Missing languages"),
+											   tr("You did not choose any language for proofing, load it from your os language?"));
+
+			if(reply == QMessageBox::Yes) {
+				qDebug() << QLocale::system().uiLanguages().at(0);
+				proofingLangs.append(QLocale::system().uiLanguages().at(0));
+			} else return;
 		}
+		 */
 
 		auto config = ConfigGenerator(this, fileName);
 		config.createFile();
