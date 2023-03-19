@@ -536,6 +536,9 @@
       </item>
       <item>
        <widget class="QLineEdit" name="lineEditOfficeSetup">
+        <property name="acceptDrops">
+         <bool>true</bool>
+        </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
         </property>
@@ -567,6 +570,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonDownload">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
         </property>
@@ -577,6 +583,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonInstall">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
         </property>
@@ -587,6 +596,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonDownloadAndInstall">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
         </property>

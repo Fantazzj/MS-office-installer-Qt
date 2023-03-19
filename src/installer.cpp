@@ -6,14 +6,6 @@ Installer::Installer(QWidget* parent) :
 	QMainWindow(parent), ui(new Ui::Installer) {
 	ui->setupUi(this);
 
-	if(!QFile("setup.exe").exists()) {
-		QMessageBox::warning(this, tr("Missing setup.exe"),
-							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
-		ui->pushButtonDownload->setDisabled(true);
-		ui->pushButtonInstall->setDisabled(true);
-		ui->pushButtonDownloadAndInstall->setDisabled(true);
-	}
-
 #ifdef DEBUG
 	auto jsonFile = QFile("../res/contents.json");
 #else
@@ -85,8 +77,17 @@ void Installer::on_pushButtonInstall_clicked() {
 }
 
 [[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {
-	auto dirName = QFileDialog::getExistingDirectory(this, tr("Office extracted files"));
-	ui->lineEditOfficeSetup->setText(dirName);
+	auto setupFile = QFileDialog::getOpenFileName(this, tr("Office setup files"));
+
+	if(setupFile.endsWith("setup.exe")) {
+		ui->pushButtonDownload->setEnabled(true);
+		ui->pushButtonInstall->setEnabled(true);
+		ui->pushButtonDownloadAndInstall->setEnabled(true);
+	} else
+		QMessageBox::warning(this, tr("Missing setup.exe"),
+							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
+
+	ui->lineEditOfficeSetup->setText(setupFile);
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
