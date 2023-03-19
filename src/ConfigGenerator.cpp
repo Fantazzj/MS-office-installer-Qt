@@ -83,7 +83,7 @@ void ConfigGenerator::_writeProductProofingElement() {
 }
 
 void ConfigGenerator::_writeOfficeLangsElements() {
-	for(auto L: installer->productLangs) {
+	for(auto& L: installer->productLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
 		configXml->writeEndElement();//Language
@@ -91,10 +91,7 @@ void ConfigGenerator::_writeOfficeLangsElements() {
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
-	if(installer->proofingLangs.isEmpty()) {
-		qDebug() << QLocale::system().uiLanguages().at(0);
-	}
-	for(auto L: installer->proofingLangs) {
+	for(auto& L: installer->proofingLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
 		configXml->writeEndElement();//Language

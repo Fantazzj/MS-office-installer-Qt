@@ -42,6 +42,16 @@ Installer::~Installer() {
 												 "config.xml",
 												 tr("Configuration file (*.xml)"));
 	if(!fileName.isEmpty()) {
+
+		if(productLangs.isEmpty()) {
+			QMessageBox::question(this, "unga bunga", "bunga unga");
+			return;
+		}
+
+		if(proofingLangs.isEmpty()) {
+			return;
+		}
+
 		auto config = ConfigGenerator(this, fileName);
 		config.createFile();
 	}
