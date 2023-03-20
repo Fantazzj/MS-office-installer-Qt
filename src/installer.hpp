@@ -37,7 +37,6 @@ private slots:
 
 private:
 	Ui::Installer* ui;
-	OfficeDeploymentTool* office;
 	QJsonObject jsonObj;
 	void comboBoxPopulator(QComboBox* comboBox, const QString& key);
 };

@@ -21,8 +21,6 @@ Installer::Installer(QWidget* parent) :
 	comboBoxPopulator(ui->comboBoxVersion, "versions");
 	comboBoxPopulator(ui->comboBoxProduct, "product");
 	comboBoxPopulator(ui->comboBoxRelease, "releaseChannel");
-
-	office = new OfficeDeploymentTool();
 }
 
 Installer::~Installer() {
@@ -51,11 +49,34 @@ Installer::~Installer() {
 }
 
 void Installer::on_pushButtonDownload_clicked() {
-	office->download();
+	if(productLangs.isEmpty()) {
+		auto reply = QMessageBox::question(this,
+										   tr("Missing languages"),
+										   tr("You did not choose any language for product, load it from your os language?"));
+
+		if(reply == QMessageBox::Yes) {
+			qDebug() << QLocale::system().uiLanguages().at(0);
+			productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
+		} else return;
+	}
+
+	QString setupFile = ui->lineEditOfficeSetup->text();
+	QString configFile = setupFile;
+	configFile.replace("setup.exe", "config.xml");
+
+	qDebug() << setupFile;
+	qDebug() << configFile;
+
+	auto config = ConfigGenerator(this, configFile);
+	config.createFile();
+
+	auto office = OfficeDeploymentTool(setupFile, configFile);
+	office.download();
 }
 
 void Installer::on_pushButtonInstall_clicked() {
-	office->install();
+	//auto office = OfficeDeploymentTool(ui->lineEditOfficeSetup->text());
+	//office.install();
 }
 
 [[maybe_unused]] void Installer::on_pushButtonDownloadAndInstall_clicked() {
