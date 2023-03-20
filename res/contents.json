@@ -16,8 +16,12 @@
     ["Semi-Annual", "SemiAnnual"]
   ],
   "languages": [
-    ["Italiano", "it-it"],
-    ["English(US)", "en-us"],
-    ["English(UK)", "en-uk"]
+    ["Italian (Italy)", "it-it"],
+    ["English (US)", "en-us"],
+    ["English (UK)", "en-uk"],
+    ["Japanese (Japan)", "ja-jp"],
+    ["Arabic (Saudi Arabia)", "ar-sa"],
+    ["Bulgarian (Bulgaria)", "bg-bg"],
+    ["Czech (Czech Republic)", "cs-cz"]
   ]
 }
