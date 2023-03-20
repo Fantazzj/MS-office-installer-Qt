@@ -30,37 +30,24 @@ Installer::~Installer() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonExport_clicked() {
+	if(productLangs.isEmpty()) {
+		auto reply = QMessageBox::question(this,
+										   tr("Missing languages"),
+										   tr("You did not choose any language for product, load it from your os language?"));
+
+		if(reply == QMessageBox::Yes) {
+			qDebug() << QLocale::system().uiLanguages().at(0);
+			productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
+		} else return;
+	}
+
 	auto fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
 												 "config.xml",
 												 tr("Configuration file (*.xml)"));
-	if(!fileName.isEmpty()) {
-		if(productLangs.isEmpty()) {
-			auto reply = QMessageBox::question(this,
-											   tr("Missing languages"),
-											   tr("You did not choose any language for product, load it from your os language?"));
+	if(fileName.isEmpty()) return;
 
-			if(reply == QMessageBox::Yes) {
-				qDebug() << QLocale::system().uiLanguages().at(0);
-				productLangs.append(QLocale::system().uiLanguages().at(0));
-			} else return;
-		}
-
-		/*
-		if(proofingLangs.isEmpty()) {
-			auto reply = QMessageBox::question(this,
-											   tr("Missing languages"),
-											   tr("You did not choose any language for proofing, load it from your os language?"));
-
-			if(reply == QMessageBox::Yes) {
-				qDebug() << QLocale::system().uiLanguages().at(0);
-				proofingLangs.append(QLocale::system().uiLanguages().at(0));
-			} else return;
-		}
-		 */
-
-		auto config = ConfigGenerator(this, fileName);
-		config.createFile();
-	}
+	auto config = ConfigGenerator(this, fileName);
+	config.createFile();
 }
 
 void Installer::on_pushButtonDownload_clicked() {
@@ -115,6 +102,7 @@ void Installer::comboBoxPopulator(QComboBox* comboBox, const QString& key) {
 QJsonObject Installer::getJsonObj() {
 	return jsonObj;
 }
+
 Ui::Installer* Installer::getUi() {
 	return ui;
 }
