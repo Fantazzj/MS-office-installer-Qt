@@ -48,7 +48,7 @@ Installer::~Installer() {
 	config.createFile();
 }
 
-void Installer::on_pushButtonDownload_clicked() {
+[[maybe_unused]] void Installer::on_pushButtonInstall_clicked() {
 	if(productLangs.isEmpty()) {
 		auto reply = QMessageBox::question(this,
 										   tr("Missing languages"),
@@ -71,26 +71,14 @@ void Installer::on_pushButtonDownload_clicked() {
 	config.createFile();
 
 	auto office = OfficeDeploymentTool(setupFile, configFile);
-	office.download();
-}
-
-void Installer::on_pushButtonInstall_clicked() {
-	//auto office = OfficeDeploymentTool(ui->lineEditOfficeSetup->text());
-	//office.install();
-}
-
-[[maybe_unused]] void Installer::on_pushButtonDownloadAndInstall_clicked() {
-	on_pushButtonDownload_clicked();
-	on_pushButtonInstall_clicked();
+	office.install();
 }
 
 [[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {
 	auto setupFile = QFileDialog::getOpenFileName(this, tr("Office setup files"));
 
 	if(setupFile.endsWith("setup.exe")) {
-		ui->pushButtonDownload->setEnabled(true);
 		ui->pushButtonInstall->setEnabled(true);
-		ui->pushButtonDownloadAndInstall->setEnabled(true);
 	} else
 		QMessageBox::warning(this, tr("Missing setup.exe"),
 							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
