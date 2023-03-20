@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>538</width>
-    <height>369</height>
+    <width>481</width>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,6 +47,19 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout">
@@ -283,6 +296,19 @@
      </layout>
     </item>
     <item>
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -369,9 +395,6 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_13"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -505,6 +528,19 @@
      </layout>
     </item>
     <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
@@ -555,6 +591,19 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -612,6 +661,37 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>pushButtonPrdLang</tabstop>
+  <tabstop>pushButtonPrfLng</tabstop>
+  <tabstop>checkBoxWord</tabstop>
+  <tabstop>checkBoxPowerPoint</tabstop>
+  <tabstop>checkBoxExcel</tabstop>
+  <tabstop>checkBoxOneNote</tabstop>
+  <tabstop>checkBoxAccess</tabstop>
+  <tabstop>checkBoxPublisher</tabstop>
+  <tabstop>checkBoxOutlook</tabstop>
+  <tabstop>checkBoxTeams</tabstop>
+  <tabstop>checkBoxOneDrive</tabstop>
+  <tabstop>checkBoxGroove</tabstop>
+  <tabstop>checkBoxInfoPath</tabstop>
+  <tabstop>checkBoxLync</tabstop>
+  <tabstop>checkBoxProject</tabstop>
+  <tabstop>checkBoxSharePointDesigner</tabstop>
+  <tabstop>comboBoxVersion</tabstop>
+  <tabstop>comboBoxProduct</tabstop>
+  <tabstop>comboBoxRelease</tabstop>
+  <tabstop>checkBoxUpdates</tabstop>
+  <tabstop>radioButtonOpenXml</tabstop>
+  <tabstop>radioButtonOpenDocument</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>lineEditOfficeSetup</tabstop>
+  <tabstop>toolButtonOfficeSetup</tabstop>
+  <tabstop>pushButtonExport</tabstop>
+  <tabstop>pushButtonDownload</tabstop>
+  <tabstop>pushButtonInstall</tabstop>
+  <tabstop>pushButtonDownloadAndInstall</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
