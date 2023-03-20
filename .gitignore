@@ -73,5 +73,6 @@ Thumbs.db
 *.dll
 *.exe
 cmake-build-debug/*
+cmake-build-release/*
 
 CMakeLists.txt.user
