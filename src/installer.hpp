@@ -6,6 +6,7 @@
 #include <QMessageBox>
 
 #include "ConfigGenerator.hpp"
+#include "DataModel.hpp"
 #include "languageSelector.hpp"
 #include "OfficeDeploymentTool.hpp"
 
@@ -21,10 +22,12 @@ class Installer : public QMainWindow {
 public:
 	Installer(QWidget* parent = nullptr);
 	~Installer();
-	QStringList productLangs;
-	QStringList proofingLangs;
+	//QStringList productLangs;
+	//QStringList proofingLangs;
 	QJsonObject getJsonObj();
-	Ui::Installer* getUi();
+	//Ui::Installer* getUi();
+	Model installerData;
+	//Model getData();
 
 private slots:
 	[[maybe_unused]] void on_pushButtonExport_clicked();
@@ -32,9 +35,11 @@ private slots:
 	[[maybe_unused]] void on_toolButtonOfficeSetup_clicked();
 	[[maybe_unused]] void on_pushButtonPrdLang_clicked();
 	[[maybe_unused]] void on_pushButtonPrfLng_clicked();
+	[[maybe_unused]] void updateData();
 
 private:
 	Ui::Installer* ui;
+	QList<QCheckBox*> checkBoxApps;
 	QJsonObject jsonObj;
 	void comboBoxPopulator(QComboBox* comboBox, const QString& key);
 };

@@ -1,10 +1,12 @@
 #include "ConfigGenerator.hpp"
 
-ConfigGenerator::ConfigGenerator(Installer* installer, const QString& fileName) {
-	this->installer = installer;
-	installerUi = installer->getUi();
+ConfigGenerator::ConfigGenerator(Model installerData, const QString& fileName) {
+	//this->installer = installer;
+	//installerUi = installer->getUi();
 
-	checkBoxApps.append(installerUi->checkBoxWord);
+	this->installerData = installerData;
+
+	/*checkBoxApps.append(installerUi->checkBoxWord);
 	checkBoxApps.append(installerUi->checkBoxPowerPoint);
 	checkBoxApps.append(installerUi->checkBoxExcel);
 	checkBoxApps.append(installerUi->checkBoxAccess);
@@ -17,7 +19,7 @@ ConfigGenerator::ConfigGenerator(Installer* installer, const QString& fileName) 
 	checkBoxApps.append(installerUi->checkBoxInfoPath);
 	checkBoxApps.append(installerUi->checkBoxLync);
 	checkBoxApps.append(installerUi->checkBoxProject);
-	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);
+	checkBoxApps.append(installerUi->checkBoxSharePointDesigner);*/
 
 	configFile = new QFile(fileName);
 	configFile->open(QIODevice::WriteOnly | QIODevice::Text);
@@ -62,19 +64,19 @@ void ConfigGenerator::createFile() {
 }
 
 void ConfigGenerator::_writeAddElement() {
-	QString version = installerUi->comboBoxVersion->currentData().toString();
-	QString channel = installerUi->comboBoxRelease->currentData().toString();
+	//QString version = installerUi->comboBoxVersion->currentData().toString();
+	//QString channel = installerUi->comboBoxRelease->currentData().toString();
 
 	configXml->writeStartElement("Add");
-	configXml->writeAttribute("OfficeClientEdition", version);
-	configXml->writeAttribute("Channel", channel);
+	configXml->writeAttribute("OfficeClientEdition", installerData.version);
+	configXml->writeAttribute("Channel", installerData.release);
 }
 
 void ConfigGenerator::_writeProductOfficeElement() {
-	auto release = installerUi->comboBoxProduct->currentData().toString();
+	//auto release = installerUi->comboBoxProduct->currentData().toString();
 
 	configXml->writeStartElement("Product");
-	configXml->writeAttribute("ID", release);
+	configXml->writeAttribute("ID", installerData.product);
 }
 
 void ConfigGenerator::_writeProductProofingElement() {
@@ -83,7 +85,7 @@ void ConfigGenerator::_writeProductProofingElement() {
 }
 
 void ConfigGenerator::_writeOfficeLangsElements() {
-	for(auto& L: installer->productLangs) {
+	for(auto& L: installerData.productLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
 		configXml->writeEndElement();//Language
@@ -91,7 +93,7 @@ void ConfigGenerator::_writeOfficeLangsElements() {
 }
 
 void ConfigGenerator::_writeProofingLangsElements() {
-	for(auto& L: installer->proofingLangs) {
+	for(auto& L: installerData.proofingLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
 		configXml->writeEndElement();//Language
@@ -99,28 +101,26 @@ void ConfigGenerator::_writeProofingLangsElements() {
 }
 
 void ConfigGenerator::_writeExcludeAppElements() {
-	for(auto& A: checkBoxApps)
-		if(!A->isChecked()) {
-			configXml->writeStartElement("ExcludeApp");
-			configXml->writeAttribute("ID", A->objectName().remove("checkBox"));
-			configXml->writeEndElement();//ExcludeApp
-		}
+	for(auto& P: installerData.exPrograms) {
+		configXml->writeStartElement("ExcludeApp");
+		configXml->writeAttribute("ID", P);
+		configXml->writeEndElement();//ExcludeApp
+	}
 }
 
 void ConfigGenerator::_writeUpdatesElement() {
 	configXml->writeStartElement("Updates");
-	if(installerUi->checkBoxUpdates->isChecked())
+	if(installerData.updates)
 		configXml->writeAttribute("Enabled", "TRUE");
 	else
 		configXml->writeAttribute("Enabled", "FALSE");
 }
 
 void ConfigGenerator::_writeSaveFileType() {
-
-	if(installerUi->radioButton->isChecked())
+	if(installerData.saveType == SaveType::NotNow)
 		return;
 
-	if(installerUi->radioButtonOpenXml->isChecked()) {
+	if(installerData.saveType == SaveType::OpenXml) {
 		//word
 		configXml->writeStartElement("User");
 		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\word\options)");
@@ -148,8 +148,6 @@ void ConfigGenerator::_writeSaveFileType() {
 		configXml->writeAttribute("App", "excel16");
 		configXml->writeAttribute("Id", "L_SaveExcelfilesas");
 		configXml->writeEndElement();
-	}
-	else if(installerUi->radioButtonOpenDocument->isChecked()) {
-
+	} else if(installerData.saveType == SaveType::OpenDoc) {
 	}
 }

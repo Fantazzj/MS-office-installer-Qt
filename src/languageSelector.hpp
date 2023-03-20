@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QScrollArea>
 
+#include "DataModel.hpp"
 #include "installer.hpp"
 #include "ui_installer.h"
 

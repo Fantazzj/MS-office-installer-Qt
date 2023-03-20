@@ -12,6 +12,21 @@ Installer::Installer(QWidget* parent) :
 	auto jsonFile = QFile("contents.json");
 #endif
 
+	checkBoxApps.append(ui->checkBoxWord);
+	checkBoxApps.append(ui->checkBoxPowerPoint);
+	checkBoxApps.append(ui->checkBoxExcel);
+	checkBoxApps.append(ui->checkBoxAccess);
+	checkBoxApps.append(ui->checkBoxPublisher);
+	checkBoxApps.append(ui->checkBoxOutlook);
+	checkBoxApps.append(ui->checkBoxTeams);
+	checkBoxApps.append(ui->checkBoxOneDrive);
+	checkBoxApps.append(ui->checkBoxOneNote);
+	checkBoxApps.append(ui->checkBoxGroove);
+	checkBoxApps.append(ui->checkBoxInfoPath);
+	checkBoxApps.append(ui->checkBoxLync);
+	checkBoxApps.append(ui->checkBoxProject);
+	checkBoxApps.append(ui->checkBoxSharePointDesigner);
+
 	jsonFile.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString dummy = jsonFile.readAll();
 	auto jsonDoc = QJsonDocument::fromJson(dummy.toUtf8());
@@ -28,14 +43,14 @@ Installer::~Installer() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonExport_clicked() {
-	if(productLangs.isEmpty()) {
+	if(installerData.productLangs.isEmpty()) {
 		auto reply = QMessageBox::question(this,
 										   tr("Missing languages"),
 										   tr("You did not choose any language for product, load it from your os language?"));
 
 		if(reply == QMessageBox::Yes) {
 			qDebug() << QLocale::system().uiLanguages().at(0);
-			productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
+			installerData.productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
 		} else return;
 	}
 
@@ -44,19 +59,19 @@ Installer::~Installer() {
 												 tr("Configuration file (*.xml)"));
 	if(fileName.isEmpty()) return;
 
-	auto config = ConfigGenerator(this, fileName);
+	auto config = ConfigGenerator(installerData, fileName);
 	config.createFile();
 }
 
 [[maybe_unused]] void Installer::on_pushButtonInstall_clicked() {
-	if(productLangs.isEmpty()) {
+	if(installerData.productLangs.isEmpty()) {
 		auto reply = QMessageBox::question(this,
 										   tr("Missing languages"),
 										   tr("You did not choose any language for product, load it from your os language?"));
 
 		if(reply == QMessageBox::Yes) {
 			qDebug() << QLocale::system().uiLanguages().at(0);
-			productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
+			installerData.productLangs.append(QLocale::system().uiLanguages().at(0).toLower());
 		} else return;
 	}
 
@@ -67,23 +82,21 @@ Installer::~Installer() {
 	qDebug() << setupFile;
 	qDebug() << configFile;
 
-	auto config = ConfigGenerator(this, configFile);
+	auto config = ConfigGenerator(installerData, configFile);
 	config.createFile();
 
-	auto office = OfficeDeploymentTool(setupFile, configFile);
+	auto office = OfficeDeploymentTool(installerData);
 	office.install();
 }
 
 [[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {
-	auto setupFile = QFileDialog::getOpenFileName(this, tr("Office setup files"));
+	auto setupFile = QFileDialog::getExistingDirectory(this, tr("Office setup files"));
 
-	if(setupFile.endsWith("setup.exe")) {
-		ui->pushButtonInstall->setEnabled(true);
-	} else
+	if(!QFile(setupFile + "/setup.exe").exists())
 		QMessageBox::warning(this, tr("Missing setup.exe"),
 							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
-
-	ui->lineEditOfficeSetup->setText(setupFile);
+	else
+		ui->lineEditOfficeSetup->setText(setupFile);
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
@@ -112,6 +125,43 @@ QJsonObject Installer::getJsonObj() {
 	return jsonObj;
 }
 
-Ui::Installer* Installer::getUi() {
+[[maybe_unused]] void Installer::updateData() {
+	installerData.exPrograms.clear();
+	for(auto C: checkBoxApps) {
+		if(!C->isChecked()) installerData.exPrograms.append(C->text());
+	}
+
+	installerData.version = ui->comboBoxVersion->currentData().toString();
+	installerData.product = ui->comboBoxProduct->currentData().toString();
+	installerData.release = ui->comboBoxRelease->currentData().toString();
+
+	if(ui->radioButtonOpenXml->isChecked())
+		installerData.saveType = SaveType::OpenXml;
+	else if(ui->radioButtonOpenDocument->isChecked())
+		installerData.saveType = SaveType::OpenDoc;
+	else
+		installerData.saveType = SaveType::NotNow;
+
+	installerData.setupDir = ui->lineEditOfficeSetup->text();
+	installerData.updates = ui->checkBoxUpdates->isChecked();
+
+	qDebug() << "data updated:";
+	qDebug() << installerData.exPrograms;
+	qDebug() << installerData.productLangs;
+	qDebug() << installerData.proofingLangs;
+	qDebug() << installerData.version;
+	qDebug() << installerData.product;
+	qDebug() << installerData.release;
+	qDebug() << installerData.setupDir;
+	qDebug() << installerData.saveType;
+	qDebug() << installerData.updates;
+	qDebug() << SEPARATOR;
+}
+
+/*Ui::Installer* Installer::getUi() {
 	return ui;
 }
+
+Model Installer::getData() {
+	return installerData;
+}*/

@@ -4,17 +4,17 @@
 #include <QProcess>
 #include <QDebug>
 
+#include "DataModel.hpp"
+
 class OfficeDeploymentTool {
 public:
-	OfficeDeploymentTool(QString setupFile, QString configFile);
+	OfficeDeploymentTool(Model installerData);
 	int install();
-	int download();
+	//int download();
 
 private:
-	QString setupFile;
-	QString configFile;
-	QString setupDir;
 	QProcess setup;
+	Model installerData;
 };
 
 #endif//OFFICEDEPLOYMENTTOOL_H

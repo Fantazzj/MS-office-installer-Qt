@@ -1,25 +1,26 @@
 #include "OfficeDeploymentTool.hpp"
 
-OfficeDeploymentTool::OfficeDeploymentTool(QString setupFile, QString configFile) {
-	this->setupFile = setupFile;
+OfficeDeploymentTool::OfficeDeploymentTool(Model installerData) {
+	/*this->setupFile = setupFile;
 	this->configFile = configFile;
 	setupDir = setupFile;
 	setupDir.remove("setup.exe");
-	qDebug() << setupDir;
+	qDebug() << setupDir;*/
+	this->installerData = installerData;
 }
 
 int OfficeDeploymentTool::install() {
-	QStringList args;
+	/*QStringList args;
 	args << "/configure" << configFile;
-	setup.start(setupFile, args);
+	setup.start(setupFile, args);*/
 	return 0;
 }
 
-int OfficeDeploymentTool::download() {
+/*int OfficeDeploymentTool::download() {
 	QStringList args;
 	args << "/download" << configFile;
 	setup.setWorkingDirectory(setupDir);
 	setup.start(setupFile, args);
 	setup.waitForFinished(-1);
 	return 0;
-}
+}*/

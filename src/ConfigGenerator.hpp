@@ -10,6 +10,7 @@
 #include <QVector>
 #include <QXmlStreamWriter>
 
+#include "DataModel.hpp"
 #include "installer.hpp"
 #include "ui_installer.h"
 
@@ -17,16 +18,17 @@ class Installer;
 
 class ConfigGenerator {
 public:
-	ConfigGenerator(Installer* installer, const QString& fileName);
+	ConfigGenerator(Model installerData, const QString& fileName);
 	~ConfigGenerator();
 	void createFile();
 
 private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
-	Ui::Installer* installerUi;
-	Installer* installer;
-	QVector<QCheckBox*> checkBoxApps;
+	Model installerData;
+	//Ui::Installer* installerUi;
+	//Installer* installer;
+	//QVector<QCheckBox*> checkBoxApps;
 	void _writeAddElement();
 	void _writeProductOfficeElement();
 	void _writeProductProofingElement();
