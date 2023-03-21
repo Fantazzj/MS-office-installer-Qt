@@ -35,27 +35,27 @@ void ConfigGenerator::createFile() {
 
 	configXml->writeStartElement("Configuration");
 
-	_writeAddElement();//Add
+	writeAddElement();//Add
 
-	_writeProductOfficeElement();//Product
-	_writeOfficeLangsElements(); //Language
-	_writeExcludeAppElements();	 //ExcludeApp
+	writeProductOfficeElement();//Product
+	writeOfficeLangsElements(); //Language
+	writeExcludeAppElements();	 //ExcludeApp
 	configXml->writeEndElement();//Product
 
-	_writeProductProofingElement();//Product
-	_writeProofingLangsElements(); //Language
+	writeProductProofingElement();//Product
+	writeProofingLangsElements(); //Language
 	configXml->writeEndElement();  //Product
 
 	configXml->writeEndElement();//Add
 
-	_writeUpdatesElement();		 //Updates
+	writeUpdatesElement();		 //Updates
 	configXml->writeEndElement();//Updates
 
 	configXml->writeStartElement("RemoveMSI");
 	configXml->writeEndElement();//RemoveMSI
 
 	configXml->writeStartElement("AppSettings");
-	_writeSaveFileType();
+	writeSaveFileType();
 	configXml->writeEndElement();//AppSettings
 
 	configXml->writeEndElement();//Configuration
@@ -63,7 +63,7 @@ void ConfigGenerator::createFile() {
 	configFile->close();
 }
 
-void ConfigGenerator::_writeAddElement() {
+void ConfigGenerator::writeAddElement() {
 	//QString version = installerUi->comboBoxVersion->currentData().toString();
 	//QString channel = installerUi->comboBoxRelease->currentData().toString();
 
@@ -72,19 +72,19 @@ void ConfigGenerator::_writeAddElement() {
 	configXml->writeAttribute("Channel", installerData.release);
 }
 
-void ConfigGenerator::_writeProductOfficeElement() {
+void ConfigGenerator::writeProductOfficeElement() {
 	//auto release = installerUi->comboBoxProduct->currentData().toString();
 
 	configXml->writeStartElement("Product");
 	configXml->writeAttribute("ID", installerData.product);
 }
 
-void ConfigGenerator::_writeProductProofingElement() {
+void ConfigGenerator::writeProductProofingElement() {
 	configXml->writeStartElement("Product");
 	configXml->writeAttribute("ID", "ProofingTools");
 }
 
-void ConfigGenerator::_writeOfficeLangsElements() {
+void ConfigGenerator::writeOfficeLangsElements() {
 	for(auto& L: installerData.productLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
@@ -92,7 +92,7 @@ void ConfigGenerator::_writeOfficeLangsElements() {
 	}
 }
 
-void ConfigGenerator::_writeProofingLangsElements() {
+void ConfigGenerator::writeProofingLangsElements() {
 	for(auto& L: installerData.proofingLangs) {
 		configXml->writeStartElement("Language");
 		configXml->writeAttribute("ID", L);
@@ -100,7 +100,7 @@ void ConfigGenerator::_writeProofingLangsElements() {
 	}
 }
 
-void ConfigGenerator::_writeExcludeAppElements() {
+void ConfigGenerator::writeExcludeAppElements() {
 	for(auto& P: installerData.exPrograms) {
 		configXml->writeStartElement("ExcludeApp");
 		configXml->writeAttribute("ID", P);
@@ -108,7 +108,7 @@ void ConfigGenerator::_writeExcludeAppElements() {
 	}
 }
 
-void ConfigGenerator::_writeUpdatesElement() {
+void ConfigGenerator::writeUpdatesElement() {
 	configXml->writeStartElement("Updates");
 	if(installerData.updates)
 		configXml->writeAttribute("Enabled", "TRUE");
@@ -116,7 +116,7 @@ void ConfigGenerator::_writeUpdatesElement() {
 		configXml->writeAttribute("Enabled", "FALSE");
 }
 
-void ConfigGenerator::_writeSaveFileType() {
+void ConfigGenerator::writeSaveFileType() {
 	if(installerData.saveType == SaveType::NotNow)
 		return;
 

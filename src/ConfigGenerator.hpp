@@ -29,14 +29,14 @@ private:
 	//Ui::Installer* installerUi;
 	//Installer* installer;
 	//QVector<QCheckBox*> checkBoxApps;
-	void _writeAddElement();
-	void _writeProductOfficeElement();
-	void _writeProductProofingElement();
-	void _writeOfficeLangsElements();
-	void _writeProofingLangsElements();
-	void _writeExcludeAppElements();
-	void _writeUpdatesElement();
-	void _writeSaveFileType();
+	void writeAddElement();
+	void writeProductOfficeElement();
+	void writeProductProofingElement();
+	void writeOfficeLangsElements();
+	void writeProofingLangsElements();
+	void writeExcludeAppElements();
+	void writeUpdatesElement();
+	void writeSaveFileType();
 };
 
 #endif//CONFIGGENERATOR_HPP
