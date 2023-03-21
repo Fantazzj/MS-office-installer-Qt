@@ -75,28 +75,28 @@ Installer::~Installer() {
 		} else return;
 	}
 
-	QString setupFile = ui->lineEditOfficeSetup->text();
-	QString configFile = setupFile;
-	configFile.replace("setup.exe", "config.xml");
-
-	qDebug() << setupFile;
-	qDebug() << configFile;
-
-	auto config = ConfigGenerator(installerData, configFile);
+	auto config = ConfigGenerator(installerData, installerData.setupDir+"/config.xml");
 	config.createFile();
 
 	auto office = OfficeDeploymentTool(installerData);
-	office.install();
+	//office.install();
 }
 
 [[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {
-	auto setupFile = QFileDialog::getExistingDirectory(this, tr("Office setup files"));
+	auto setupDirectory = QFileDialog::getExistingDirectory(this, tr("Office setup files"));
 
-	if(!QFile(setupFile + "/setup.exe").exists())
+	if(setupDirectory.isEmpty()) return;
+
+	if(!QFile(setupDirectory + "/setup.exe").exists()) {
 		QMessageBox::warning(this, tr("Missing setup.exe"),
 							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
-	else
-		ui->lineEditOfficeSetup->setText(setupFile);
+		ui->pushButtonInstall->setDisabled(true);
+		ui->lineEditOfficeSetup->setText("");
+	}
+	else {
+		ui->lineEditOfficeSetup->setText(setupDirectory);
+		ui->pushButtonInstall->setEnabled(true);
+	}
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
