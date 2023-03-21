@@ -9,12 +9,14 @@
 class OfficeDeploymentTool {
 public:
 	OfficeDeploymentTool(Model installerData);
+	~OfficeDeploymentTool();
 	int install();
 	//int download();
 
 private:
 	QProcess setup;
-	Model installerData;
+	QString configFile;
+	QString setupFile;
 };
 
 #endif//OFFICEDEPLOYMENTTOOL_H
