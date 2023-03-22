@@ -2,13 +2,15 @@
 #define OFFICEDEPLOYMENTTOOL_H
 
 #include <QDebug>
+#include <QMessageBox>
 #include <QProcess>
+#include <QThread>
 
 #include "DataModel.hpp"
 
 class OfficeDeploymentTool {
 public:
-	OfficeDeploymentTool(Model installerData);
+	OfficeDeploymentTool(const Model& installerData);
 	~OfficeDeploymentTool();
 	int install();
 

@@ -1,6 +1,6 @@
 #include "OfficeDeploymentTool.hpp"
 
-OfficeDeploymentTool::OfficeDeploymentTool(Model installerData) {
+OfficeDeploymentTool::OfficeDeploymentTool(const Model& installerData) {
 	qDebug() << "OfficeDeploymentTool created";
 	setupFile = installerData.setupDir + "/setup.exe";
 	configFile = installerData.setupDir + "/config.xml";
@@ -14,8 +14,14 @@ OfficeDeploymentTool::~OfficeDeploymentTool() {
 }
 
 int OfficeDeploymentTool::install() {
-	QStringList args;
+	/*QStringList args;
 	args << "/configure" << configFile;
 	setup.start(setupFile, args);
+	setup.waitForFinished(-1);
+	return 0;*/
+	for(int j = 0; j < 10; j++) {
+		qInfo() << "I'm working" << j;
+		QThread::msleep(1000);
+	}
 	return 0;
 }

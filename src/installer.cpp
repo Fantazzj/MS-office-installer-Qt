@@ -80,8 +80,19 @@ Installer::~Installer() {
 	auto config = ConfigGenerator(installerData, installerData.setupDir + "/config.xml");
 	config.createFile();
 
-	auto office = OfficeDeploymentTool(installerData);
-	//office.install();
+	auto waiter = new QProgressDialog(tr("Please wait while office deployment tool installs office with your configuration"),
+									  QString(), 0, 0, this, Qt::CoverWindow);
+	waiter->setWindowModality(Qt::WindowModality::WindowModal);
+	waiter->setValue(0);
+	waiter->show();
+
+	auto temp = installerData;
+	auto thread = QThread::create([temp, waiter] {
+		auto office = OfficeDeploymentTool(temp);
+		office.install();
+		waiter->close();
+	});
+	thread->start();
 }
 
 [[maybe_unused]] void Installer::on_toolButtonOfficeSetup_clicked() {

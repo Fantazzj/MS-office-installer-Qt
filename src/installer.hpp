@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QProgressDialog>
+#include <QThread>
 
 #include "ConfigGenerator.hpp"
 #include "DataModel.hpp"
