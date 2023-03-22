@@ -1,6 +1,7 @@
 #ifndef INSTALLER_HPP
 #define INSTALLER_HPP
 
+#include <QDesktopServices>
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QMessageBox>
@@ -36,6 +37,8 @@ private slots:
 	[[maybe_unused]] void on_pushButtonPrdLang_clicked();
 	[[maybe_unused]] void on_pushButtonPrfLng_clicked();
 	[[maybe_unused]] void updateData();
+
+	void on_toolButtonDeployInfo_clicked();
 
 private:
 	Ui::Installer* ui;

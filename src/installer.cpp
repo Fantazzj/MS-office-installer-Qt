@@ -165,3 +165,7 @@ QJsonObject Installer::getJsonObj() {
 Model Installer::getData() {
 	return installerData;
 }*/
+
+void Installer::on_toolButtonDeployInfo_clicked() {
+	QDesktopServices::openUrl(QUrl("https://www.microsoft.com/en-us/download/details.aspx?id=49117", QUrl::TolerantMode));
+}
