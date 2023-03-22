@@ -1,8 +1,8 @@
 #ifndef OFFICEDEPLOYMENTTOOL_H
 #define OFFICEDEPLOYMENTTOOL_H
 
-#include <QProcess>
 #include <QDebug>
+#include <QProcess>
 
 #include "DataModel.hpp"
 
@@ -11,7 +11,6 @@ public:
 	OfficeDeploymentTool(Model installerData);
 	~OfficeDeploymentTool();
 	int install();
-	//int download();
 
 private:
 	QProcess setup;

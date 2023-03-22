@@ -39,14 +39,14 @@ void ConfigGenerator::createFile() {
 
 	writeAddElement();//Add
 
-	writeProductOfficeElement();//Product
-	writeOfficeLangsElements(); //Language
+	writeProductOfficeElement(); //Product
+	writeOfficeLangsElements();	 //Language
 	writeExcludeAppElements();	 //ExcludeApp
 	configXml->writeEndElement();//Product
 
 	writeProductProofingElement();//Product
 	writeProofingLangsElements(); //Language
-	configXml->writeEndElement();  //Product
+	configXml->writeEndElement(); //Product
 
 	configXml->writeEndElement();//Add
 

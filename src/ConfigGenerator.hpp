@@ -26,9 +26,6 @@ private:
 	QFile* configFile;
 	QXmlStreamWriter* configXml;
 	Model installerData;
-	//Ui::Installer* installerUi;
-	//Installer* installer;
-	//QVector<QCheckBox*> checkBoxApps;
 	void writeAddElement();
 	void writeProductOfficeElement();
 	void writeProductProofingElement();

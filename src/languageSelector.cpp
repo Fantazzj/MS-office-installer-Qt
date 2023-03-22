@@ -1,4 +1,5 @@
 #include "languageSelector.hpp"
+
 #include "ui_languageSelector.h"
 
 languageSelector::languageSelector(QMainWindow* parent, CallType callType) :
@@ -58,17 +59,20 @@ void languageSelector::widgetPopulator(QScrollArea* scrollArea) {
 
 	auto layout = new QGridLayout();
 
-	int i=0, j=0;
+	int i = 0, j = 0;
 	for(auto l: languages) {
 		qDebug() << l.toArray().at(0) << l.toArray().at(1);
 		auto checkBox = new QCheckBox(l.toArray().at(0).toString());
 		checkBoxLangs.append(checkBox);
 		layout->addWidget(checkBox, i, j++);
-		if(j>=3) {i++; j=0;}
+		if(j >= 3) {
+			i++;
+			j = 0;
+		}
 	}
 
-/*	for(int k=0; k<20; k++) {
-		auto checkBox = new QCheckBox("NNN"+QString::number(k));
+	/*	for(int k=0; k<20; k++) {
+		auto checkBox = new QCheckBox("Language " + QString::number(k));
 		layout->addWidget(checkBox, i, j++);
 		if(j>=3) {i++; j=0;}
 	}*/

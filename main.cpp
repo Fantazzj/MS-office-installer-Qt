@@ -1,8 +1,8 @@
-#include "src/installer.hpp"
-
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+
+#include "src/installer.hpp"
 
 int main(int argc, char* argv[]) {
 	QApplication a(argc, argv);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
 	QTranslator basic;
 	if(basic.load("translations/qt_it"))
-			a.installTranslator(&basic);
+		a.installTranslator(&basic);
 
 	Installer w;
 	w.show();
