@@ -28,6 +28,8 @@ ConfigGenerator::ConfigGenerator(Model installerData, const QString& fileName) {
 
 ConfigGenerator::~ConfigGenerator() {
 	if(configFile != nullptr && configFile->isOpen()) configFile->close();
+	qDebug() << "ConfigGenerator destroyed";
+	qDebug() << SEPARATOR;
 }
 
 void ConfigGenerator::createFile() {

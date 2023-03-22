@@ -40,6 +40,8 @@ Installer::Installer(QWidget* parent) :
 
 Installer::~Installer() {
 	delete ui;
+	qDebug() << "installer destroyed";
+	qDebug() << SEPARATOR;
 }
 
 [[maybe_unused]] void Installer::on_pushButtonExport_clicked() {
@@ -75,7 +77,7 @@ Installer::~Installer() {
 		} else return;
 	}
 
-	auto config = ConfigGenerator(installerData, installerData.setupDir+"/config.xml");
+	auto config = ConfigGenerator(installerData, installerData.setupDir + "/config.xml");
 	config.createFile();
 
 	auto office = OfficeDeploymentTool(installerData);
@@ -92,8 +94,7 @@ Installer::~Installer() {
 							 tr("There is no office's setup.exe, so you cannot install or download, only export configuration"));
 		ui->pushButtonInstall->setDisabled(true);
 		ui->lineEditOfficeSetup->setText("");
-	}
-	else {
+	} else {
 		ui->lineEditOfficeSetup->setText(setupDirectory);
 		ui->pushButtonInstall->setEnabled(true);
 	}
