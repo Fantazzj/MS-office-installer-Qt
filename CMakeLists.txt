@@ -49,9 +49,16 @@ target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
 
 qt_add_translations(MS-office-installer TS_FILES ${TS_FILES})
 
-set_target_properties(MS-office-installer PROPERTIES
-        WIN32_EXECUTABLE FAlSE #TRUE to prevent creating console
-        )
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set_target_properties(MS-office-installer PROPERTIES
+            WIN32_EXECUTABLE TRUE #prevent creating console
+            )
+else ()
+    set_target_properties(MS-office-installer PROPERTIES
+            WIN32_EXECUTABLE FALSE #create console
+            )
+endif ()
+
 
 install(TARGETS MS-office-installer
         BUNDLE DESTINATION .
