@@ -14,11 +14,11 @@ OfficeDeploymentTool::~OfficeDeploymentTool() {
 }
 
 int OfficeDeploymentTool::install() {
-	/*QStringList args;
+	QStringList args;
 	args << "/configure" << configFile;
 	setup.start(setupFile, args);
 	setup.waitForFinished(-1);
-	return 0;*/
+	return 0;
 	for(int j = 0; j < 10; j++) {
 		qInfo() << "I'm working" << j;
 		QThread::msleep(1000);
