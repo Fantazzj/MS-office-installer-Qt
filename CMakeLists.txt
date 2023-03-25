@@ -38,7 +38,8 @@ set(PROJECT_SOURCES
         src/ConfigGenerator.hpp
         src/ConfigGenerator.cpp
         ${TS_FILES}
-        src/DataModel.hpp)
+        src/DataModel.hpp
+        res/icons.rc)
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
