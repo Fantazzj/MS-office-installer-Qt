@@ -50,6 +50,12 @@ target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
 
 qt_add_translations(MS-office-installer TS_FILES ${TS_FILES})
 
+qt_add_resources(MS-office-installer "contents"
+        PREFIX "/"
+        FILES
+            res/contents.json
+        )
+
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     set_target_properties(MS-office-installer PROPERTIES
             WIN32_EXECUTABLE TRUE #prevent creating console
