@@ -6,11 +6,7 @@ Installer::Installer(QWidget* parent) :
 	QMainWindow(parent), ui(new Ui::Installer) {
 	ui->setupUi(this);
 
-#ifdef DEBUG
 	auto jsonFile = QFile(":/res/contents.json");
-#else
-	auto jsonFile = QFile(":/res/contents.json");
-#endif
 
 	checkBoxApps.append(ui->checkBoxWord);
 	checkBoxApps.append(ui->checkBoxPowerPoint);
