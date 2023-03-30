@@ -48,7 +48,9 @@ qt_add_executable(MS-office-installer
 
 target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-qt_add_translations(MS-office-installer TS_FILES ${TS_FILES})
+qt_add_translations(MS-office-installer
+        TS_FILES ${TS_FILES}
+        LUPDATE_OPTIONS -no-ui-lines -no-obsolete) #TODO is making a mess
 
 qt_add_resources(MS-office-installer "contents"
         PREFIX "/"
