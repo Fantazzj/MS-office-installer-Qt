@@ -50,7 +50,7 @@ target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
 
 #qt_add_translations(MS-office-installer
 #        TS_FILES ${TS_FILES}
-#        LUPDATE_OPTIONS -no-ui-lines -no-obsolete) #TODO is making a mess
+#        LUPDATE_OPTIONS -no-ui-lines -no-obsolete)
 
 qt_add_lupdate(MS-office-installer
         TS_FILES ${TS_FILES}
@@ -74,9 +74,15 @@ else ()
             )
 endif ()
 
-
 install(TARGETS MS-office-installer
         BUNDLE DESTINATION .
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+qt_generate_deploy_app_script(TARGET MS-office-installer
+        FILENAME_VARIABLE deploy_script
+        NO_UNSUPPORTED_PLATFORM_ERROR
+)
+install(SCRIPT ${deploy_script})
 
 qt_finalize_executable(MS-office-installer)
