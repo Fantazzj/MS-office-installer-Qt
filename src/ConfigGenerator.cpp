@@ -108,6 +108,9 @@ void ConfigGenerator::writeExcludeAppElements() {
 		configXml->writeAttribute("ID", P);
 		configXml->writeEndElement();//ExcludeApp
 	}
+	configXml->writeStartElement("ExcludeApp");
+	configXml->writeAttribute("ID", "Bing");
+	configXml->writeEndElement();//ExcludeApp
 }
 
 void ConfigGenerator::writeUpdatesElement() {
