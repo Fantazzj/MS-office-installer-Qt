@@ -167,13 +167,13 @@
         <location filename="../src/installer.cpp" line="46"/>
         <location filename="../src/installer.cpp" line="67"/>
         <source>Missing languages</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingue mancanti</translation>
     </message>
     <message>
         <location filename="../src/installer.cpp" line="47"/>
         <location filename="../src/installer.cpp" line="68"/>
         <source>You did not choose any language for product, load it from your os language?</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è stata selezionata alcuna lingua per il prodotto, caricarla dal tuo sistema operativo?</translation>
     </message>
     <message>
         <location filename="../src/installer.cpp" line="57"/>
@@ -183,17 +183,17 @@
     <message>
         <location filename="../src/installer.cpp" line="79"/>
         <source>Please wait while office deployment tool installs office with your configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Perfavore aspettare mentre office deployment tool installa office con la tua configurazione</translation>
     </message>
     <message>
         <location filename="../src/installer.cpp" line="95"/>
         <source>Office setup files</source>
-        <translation type="unfinished"></translation>
+        <translation>File del setup di office</translation>
     </message>
     <message>
         <location filename="../src/installer.ui"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
