@@ -151,5 +151,32 @@ void ConfigGenerator::writeSaveFileType() {
 		configXml->writeAttribute("Id", "L_SaveExcelfilesas");
 		configXml->writeEndElement();
 	} else if(installerData.saveType == SaveType::OpenDoc) {
+		//word
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\word\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "ODT");
+		configXml->writeAttribute("Type", "REG_SZ");
+		configXml->writeAttribute("App", "word16");
+		configXml->writeAttribute("Id", "L_SaveWordfilesas");
+		configXml->writeEndElement();
+		//powerpoint
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\powerpoint\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "52");
+		configXml->writeAttribute("Type", "REG_DWORD");
+		configXml->writeAttribute("App", "ppt16");
+		configXml->writeAttribute("Id", "L_SavePowerPointfilesas");
+		configXml->writeEndElement();
+		//excel
+		configXml->writeStartElement("User");
+		configXml->writeAttribute("Key", R"(software\microsoft\office\16.0\excel\options)");
+		configXml->writeAttribute("Name", "defaultformat");
+		configXml->writeAttribute("Value", "60");
+		configXml->writeAttribute("Type", "REG_DWORD");
+		configXml->writeAttribute("App", "excel16");
+		configXml->writeAttribute("Id", "L_SaveExcelfilesas");
+		configXml->writeEndElement();
 	}
 }
