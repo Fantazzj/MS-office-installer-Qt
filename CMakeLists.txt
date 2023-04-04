@@ -48,15 +48,17 @@ qt_add_executable(MS-office-installer
 
 target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-#qt_add_translations(MS-office-installer
-#        TS_FILES ${TS_FILES}
-#        LUPDATE_OPTIONS -no-ui-lines -no-obsolete)
-
-qt_add_lupdate(MS-office-installer
+qt_add_translations(MS-office-installer
         TS_FILES ${TS_FILES}
         SOURCES src/languageSelector.ui src/installer.ui src/installer.cpp
-        OPTIONS -no-obsolete -no-ui-lines
+        LUPDATE_OPTIONS -no-ui-lines -no-obsolete
         )
+
+#qt_add_lupdate(MS-office-installer
+#        TS_FILES ${TS_FILES}
+#        SOURCES src/languageSelector.ui src/installer.ui src/installer.cpp
+#        OPTIONS -no-obsolete -no-ui-lines
+#        )
 
 qt_add_resources(MS-office-installer "contents"
         PREFIX "/"

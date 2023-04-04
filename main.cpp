@@ -7,8 +7,9 @@
 int main(int argc, char* argv[]) {
 	QApplication a(argc, argv);
 
-	QTranslator translator;
 	const QStringList uiLanguages = QLocale::system().uiLanguages();
+
+	QTranslator translator;
 	for(const QString& locale: uiLanguages) {
 		const QString baseName = "MS-office-installer_" + QLocale(locale).name();
 		if(translator.load(":/i18n/" + baseName)) {
@@ -18,8 +19,13 @@ int main(int argc, char* argv[]) {
 	}
 
 	QTranslator basic;
-	if(basic.load("translations/qt_it"))
-		a.installTranslator(&basic);
+	for(const QString& locale: uiLanguages) {
+		const QString baseName = "qt_" + QLocale(locale).name();
+		if(basic.load("../translations/" + baseName)) {
+			a.installTranslator(&basic);
+			break;
+		}
+	}
 
 	Installer w;
 	w.show();
