@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QLibraryInfo>
 #include <QLocale>
 #include <QTranslator>
 
@@ -7,6 +8,7 @@
 int main(int argc, char* argv[]) {
 	QApplication a(argc, argv);
 
+	qDebug() << "Loading languages";
 	const QStringList uiLanguages = QLocale::system().uiLanguages();
 
 	QTranslator translator;
@@ -20,12 +22,14 @@ int main(int argc, char* argv[]) {
 
 	QTranslator basic;
 	for(const QString& locale: uiLanguages) {
-		const QString baseName = "qt_" + QLocale(locale).name();
-		if(basic.load("../translations/" + baseName)) {
+		const QString baseName = "/qt_" + QLocale(locale).name();
+		if(basic.load(QLibraryInfo::path(QLibraryInfo::TranslationsPath) + baseName)) {
 			a.installTranslator(&basic);
 			break;
 		}
 	}
+
+	qDebug() << SEPARATOR;
 
 	Installer w;
 	w.show();
