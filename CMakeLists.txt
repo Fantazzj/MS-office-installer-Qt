@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
@@ -63,7 +63,7 @@ qt_add_translations(MS-office-installer
 qt_add_resources(MS-office-installer "contents"
         PREFIX "/"
         FILES
-            res/contents.json
+        res/contents.json
         )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
@@ -78,13 +78,23 @@ endif ()
 
 install(TARGETS MS-office-installer
         BUNDLE DESTINATION .
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+        RUNTIME DESTINATION .
+        )
 
-qt_generate_deploy_app_script(TARGET MS-office-installer
-        FILENAME_VARIABLE deploy_script
-        NO_UNSUPPORTED_PLATFORM_ERROR
-)
+qt_generate_deploy_script(TARGET MS-office-installer
+        OUTPUT_SCRIPT deploy_script
+        CONTENT "
+            qt_deploy_runtime_dependencies(
+                EXECUTABLE MS-office-installer.exe
+                BIN_DIR .
+                )
+            qt_deploy_qt_conf(
+                ${CMAKE_INSTALL_PREFIX}/qt.conf
+                BIN_DIR ./bin
+                PLUGINS_DIR ./plugins
+                TRANSLATIONS_DIR ./translations
+                )"
+        )
 install(SCRIPT ${deploy_script})
 
 qt_finalize_executable(MS-office-installer)
