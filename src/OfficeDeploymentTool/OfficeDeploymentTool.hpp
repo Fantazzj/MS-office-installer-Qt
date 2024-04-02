@@ -6,7 +6,7 @@
 #include <QProcess>
 #include <QThread>
 
-#include "DataModel.hpp"
+#include "src/DataModel/DataModel.hpp"
 
 class OfficeDeploymentTool {
 public:

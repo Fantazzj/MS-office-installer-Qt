@@ -8,10 +8,10 @@
 #include <QProgressDialog>
 #include <QThread>
 
-#include "ConfigGenerator.hpp"
-#include "DataModel.hpp"
-#include "languageSelector.hpp"
-#include "OfficeDeploymentTool.hpp"
+#include "src/ConfigGenerator/ConfigGenerator.hpp"
+#include "src/DataModel/DataModel.hpp"
+#include "src/LanguageSelector/LanguageSelector.hpp"
+#include "src/OfficeDeploymentTool/OfficeDeploymentTool.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

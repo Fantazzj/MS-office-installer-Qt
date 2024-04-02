@@ -1,9 +1,9 @@
-#include "languageSelector.hpp"
+#include "LanguageSelector.hpp"
 
 #include "ui_languageSelector.h"
 
-languageSelector::languageSelector(QMainWindow* parent, CallType callType) :
-	QDialog(parent, Qt::Dialog), ui(new Ui::languageSelector) {
+LanguageSelector::LanguageSelector(QMainWindow* parent, CallType callType) :
+	QDialog(parent, Qt::Dialog), ui(new Ui::LanguageSelector) {
 	ui->setupUi(this);
 	installer = dynamic_cast<Installer*>(parent);
 	this->callType = callType;
@@ -14,13 +14,13 @@ languageSelector::languageSelector(QMainWindow* parent, CallType callType) :
 	qDebug() << "call type:" << callType;
 }
 
-languageSelector::~languageSelector() {
+LanguageSelector::~LanguageSelector() {
 	qDebug() << "langUi destroyed";
 	qDebug() << SEPARATOR;
 	delete ui;
 }
 
-[[maybe_unused]] void languageSelector::on_buttonBox_accepted() {
+[[maybe_unused]] void LanguageSelector::on_buttonBox_accepted() {
 	qDebug() << "confirm";
 	QStringList langsList;
 
@@ -45,15 +45,15 @@ languageSelector::~languageSelector() {
 	delete this;
 }
 
-[[maybe_unused]] void languageSelector::on_buttonBox_rejected() {
+[[maybe_unused]] void LanguageSelector::on_buttonBox_rejected() {
 	reject();
 }
-void languageSelector::reject() {
+void LanguageSelector::reject() {
 	qDebug() << "cancel";
 	delete this;
 }
 
-void languageSelector::widgetPopulator(QScrollArea* scrollArea) {
+void LanguageSelector::widgetPopulator(QScrollArea* scrollArea) {
 	auto jsonObj = installer->getJsonObj();
 	auto languages = jsonObj.value("languages").toArray();
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>languageSelector</class>
- <widget class="QDialog" name="languageSelector">
+ <class>LanguageSelector</class>
+ <widget class="QDialog" name="LanguageSelector">
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -72,7 +72,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>languageSelector</receiver>
+   <receiver>LanguageSelector</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -88,7 +88,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>languageSelector</receiver>
+   <receiver>LanguageSelector</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

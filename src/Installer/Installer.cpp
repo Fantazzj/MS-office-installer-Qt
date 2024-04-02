@@ -1,4 +1,4 @@
-#include "installer.hpp"
+#include "Installer.hpp"
 
 #include "ui_installer.h"
 
@@ -108,13 +108,13 @@ Installer::~Installer() {
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrdLang_clicked() {
-	auto langUi = new languageSelector(this, CallType::Product);
+	auto langUi = new LanguageSelector(this, CallType::Product);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }
 
 [[maybe_unused]] void Installer::on_pushButtonPrfLng_clicked() {
-	auto* langUi = new languageSelector(this, CallType::Proofing);
+	auto* langUi = new LanguageSelector(this, CallType::Proofing);
 	langUi->setWindowModality(Qt::WindowModality::WindowModal);
 	langUi->show();
 }

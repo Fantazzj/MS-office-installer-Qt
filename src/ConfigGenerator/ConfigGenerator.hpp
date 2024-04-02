@@ -10,9 +10,9 @@
 #include <QVector>
 #include <QXmlStreamWriter>
 
-#include "DataModel.hpp"
-#include "installer.hpp"
-#include "ui_installer.h"
+#include "src/DataModel/DataModel.hpp"
+#include "src/Installer/Installer.hpp"
+#include "../Installer/ui_installer.h"
 
 class Installer;
 

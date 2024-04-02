@@ -4,13 +4,13 @@
 #include <QDialog>
 #include <QScrollArea>
 
-#include "DataModel.hpp"
-#include "installer.hpp"
-#include "ui_installer.h"
+#include "src/DataModel/DataModel.hpp"
+#include "src/Installer/Installer.hpp"
+#include "../Installer/ui_installer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-	class languageSelector;
+	class LanguageSelector;
 }
 QT_END_NAMESPACE
 
@@ -22,12 +22,12 @@ enum CallType {
 	Proofing
 };
 
-class languageSelector : public QDialog {
+class LanguageSelector : public QDialog {
 	Q_OBJECT
 
 public:
-	languageSelector(QMainWindow* parent = nullptr, CallType callType = None);
-	~languageSelector();
+	LanguageSelector(QMainWindow* parent = nullptr, CallType callType = None);
+	~LanguageSelector();
 
 private slots:
 	[[maybe_unused]] void on_buttonBox_accepted();
@@ -35,7 +35,7 @@ private slots:
 	void reject() override;
 
 private:
-	Ui::languageSelector* ui;
+	Ui::LanguageSelector* ui;
 	Installer* installer;
 	CallType callType;
 	QVector<QCheckBox*> checkBoxLangs;

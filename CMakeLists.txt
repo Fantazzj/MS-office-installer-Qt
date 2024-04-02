@@ -27,36 +27,37 @@ set(TS_FILES translations/MS-office-installer_it_IT.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        src/installer.hpp
-        src/installer.cpp
-        src/installer.ui
-        src/languageSelector.ui
-        src/languageSelector.hpp
-        src/languageSelector.cpp
-        src/OfficeDeploymentTool.hpp
-        src/OfficeDeploymentTool.cpp
-        src/ConfigGenerator.hpp
-        src/ConfigGenerator.cpp
+        src/Installer/Installer.hpp
+        src/Installer/Installer.cpp
+        src/Installer/Installer.ui
+        src/LanguageSelector/LanguageSelector.ui
+        src/LanguageSelector/LanguageSelector.hpp
+        src/LanguageSelector/LanguageSelector.cpp
+        src/OfficeDeploymentTool/OfficeDeploymentTool.hpp
+        src/OfficeDeploymentTool/OfficeDeploymentTool.cpp
+        src/ConfigGenerator/ConfigGenerator.hpp
+        src/ConfigGenerator/ConfigGenerator.cpp
         ${TS_FILES}
-        src/DataModel.hpp
+        src/DataModel/DataModel.hpp
         res/icons.rc)
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        )
+)
 
-target_link_libraries(MS-office-installer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(MS-office-installer
+        PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 qt_add_translations(MS-office-installer
         TS_FILES ${TS_FILES}
-        SOURCES src/languageSelector.ui src/installer.ui src/installer.cpp
+        SOURCES src/LanguageSelector/LanguageSelector.ui src/Installer/Installer.ui src/Installer/Installer.cpp
         LUPDATE_OPTIONS -no-ui-lines -no-obsolete
-        )
+)
 
 #qt_add_lupdate(MS-office-installer
 #        TS_FILES ${TS_FILES}
-#        SOURCES src/languageSelector.ui src/installer.ui src/installer.cpp
+#        SOURCES src/LanguageSelector.ui src/Installer.ui src/installer.cpp
 #        OPTIONS -no-obsolete -no-ui-lines
 #        )
 
@@ -64,22 +65,22 @@ qt_add_resources(MS-office-installer "contents"
         PREFIX "/"
         FILES
         res/contents.json
-        )
+)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     set_target_properties(MS-office-installer PROPERTIES
             WIN32_EXECUTABLE TRUE #prevent creating console
-            )
+    )
 else ()
     set_target_properties(MS-office-installer PROPERTIES
             WIN32_EXECUTABLE FALSE #create console
-            )
+    )
 endif ()
 
 install(TARGETS MS-office-installer
         BUNDLE DESTINATION .
         RUNTIME DESTINATION .
-        )
+)
 
 qt_generate_deploy_script(TARGET MS-office-installer
         OUTPUT_SCRIPT deploy_script
@@ -94,7 +95,7 @@ qt_generate_deploy_script(TARGET MS-office-installer
                 PLUGINS_DIR ./plugins
                 TRANSLATIONS_DIR ./translations
                 )"
-        )
+)
 install(SCRIPT ${deploy_script})
 
 qt_finalize_executable(MS-office-installer)

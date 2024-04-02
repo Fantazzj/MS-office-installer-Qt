@@ -197,9 +197,9 @@
     </message>
 </context>
 <context>
-    <name>languageSelector</name>
+    <name>LanguageSelector</name>
     <message>
-        <location filename="../src/languageSelector.ui"/>
+        <location filename="../src/LanguageSelector.ui"/>
         <source>Choose languages</source>
         <translation>Scegli le lingue</translation>
     </message>
