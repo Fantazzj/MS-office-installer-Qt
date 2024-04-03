@@ -39,7 +39,8 @@ set(PROJECT_SOURCES
         src/ConfigGenerator/ConfigGenerator.cpp
         ${TS_FILES}
         src/DataModel/DataModel.hpp
-        res/icons.rc)
+        res/icons.rc
+)
 
 qt_add_executable(MS-office-installer
         MANUAL_FINALIZATION
@@ -99,3 +100,22 @@ qt_generate_deploy_script(TARGET MS-office-installer
 install(SCRIPT ${deploy_script})
 
 qt_finalize_executable(MS-office-installer)
+
+if (true)
+    Include(FetchContent)
+
+    FetchContent_Declare(
+            Catch2
+            GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+            GIT_TAG v3.4.0 # or a later release
+    )
+
+    FetchContent_MakeAvailable(Catch2)
+
+    add_executable(ConfigGeneratorTest
+            test/ConfigGenerator_Test.cpp
+    )
+    target_link_libraries(ConfigGeneratorTest
+            PRIVATE Catch2::Catch2WithMain
+    )
+endif ()
