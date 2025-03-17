@@ -3,6 +3,7 @@
 ## Info
 
 This software, obviously, it is not an official Microsoft's tool. I created it to simplify, at least for me, personalization of office's installations.
+I'm planning to create a version which uses C# and .NET instead of C++ and Qt. This is because the software is intended to be used only on Windows (obviously).
 
 ## Download
 
